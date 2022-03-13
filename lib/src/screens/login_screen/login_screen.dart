@@ -1,12 +1,16 @@
+import 'package:dio/dio.dart';
+import 'package:domus/src/models/user_model.dart';
+import 'package:domus/src/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_login/flutter_login.dart';
+import 'package:domus/api/api.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:convert';
 import 'dashboard_screen.dart';
 import './components/constants.dart';
 import './components/custom_route.dart';
-
 const users = const {
   'zmd@gmail.com': '12345',
   'hunter@gmail.com': 'hunter',
@@ -17,19 +21,28 @@ class LoginScreen extends StatelessWidget {
 
   const LoginScreen({Key? key}) : super(key: key);
 
+
   Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
 
-  Future<String?> _loginUser(LoginData data) {
-    return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(data.name)) {
+
+  Future<String?> _loginUser(LoginData data) async{
+    UserModel user = UserModel(name: data.name, password: data.password);
+
+      print('aaaaaaaaaaaaaa');
+      Response response = await Api().login(jsonEncode(user));
+      debugPrint('response: ${response.data}');
+      debugPrint('response: ${response.statusCode}');
+      Map<String, dynamic> userDetail = jsonDecode(response.data.toString());
+      print(userDetail['data']);
+      print('aaaaaaaaaaaaaa');
+      if (response.statusCode != 200) {
         return 'User not exists';
       }
-      if (users[data.name] != data.password) {
-        return 'Password does not match';
-      }
       return null;
-    });
+
   }
+
+
 
   Future<String?> _signupUser(SignupData data) {
     return Future.delayed(loginTime).then((_) {
@@ -261,7 +274,7 @@ class LoginScreen extends StatelessWidget {
       },
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(FadePageRoute(
-          builder: (context) => const DashboardScreen(),
+          builder: (context) => const HomeScreen(),
         ));
       },
       onRecoverPassword: (name) {
