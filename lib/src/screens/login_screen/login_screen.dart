@@ -1,6 +1,7 @@
-import 'package:dio/dio.dart';
-import 'package:domus/src/models/user_model.dart';
+import 'package:domus/src/entity/user/login_entity.dart';
+import 'package:domus/src/entity/user/user_entity.dart';
 import 'package:domus/src/screens/home_screen/home_screen.dart';
+import 'package:domus/utils/shared_preferences_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_login/flutter_login.dart';
@@ -26,20 +27,18 @@ class LoginScreen extends StatelessWidget {
 
 
   Future<String?> _loginUser(LoginData data) async{
-    UserModel user = UserModel(name: data.name, password: data.password);
+    LoginEntity user = LoginEntity(name: data.name, password: data.password);
+      print("before");
+      var res = Api.login(data: jsonEncode(user), onSuccess: userHandler);
+      print("after");
 
-      print('aaaaaaaaaaaaaa');
-      Response response = await Api().login(jsonEncode(user));
-      debugPrint('response: ${response.data}');
-      debugPrint('response: ${response.statusCode}');
-      Map<String, dynamic> userDetail = jsonDecode(response.data.toString());
-      print(userDetail['data']);
-      print('aaaaaaaaaaaaaa');
-      if (response.statusCode != 200) {
-        return 'User not exists';
-      }
+    return res;
+  }
+
+   userHandler(UserEntity? user) {
+      print("token set succesed");
+      SharedPreferencesUtil.setToken(user!.token);
       return null;
-
   }
 
 
