@@ -1,5 +1,5 @@
-import 'package:domus/config/size_config.dart';
-import 'package:domus/view/home_screen_view_model.dart';
+import 'package:maple/config/size_config.dart';
+import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
 
 Widget SavingsContainer(

@@ -1,9 +1,9 @@
-import 'package:domus/src/entity/color_model.dart';
-import 'package:domus/src/screens/smart_light/components/color_dot.dart';
-import 'package:domus/src/screens/smart_light/components/reusable_buttons.dart';
-import 'package:domus/view/smart_light_view_model.dart';
+import 'package:maple/src/entity/color_model.dart';
+import 'package:maple/src/screens/smart_light/components/color_dot.dart';
+import 'package:maple/src/screens/smart_light/components/reusable_buttons.dart';
+import 'package:maple/view/smart_light_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:domus/constant/constant.dart';
+import 'package:maple/constant/constant.dart';
 
 Widget ColorPickerSheet(
     {required BuildContext context, required SmartLightViewModel model}) {

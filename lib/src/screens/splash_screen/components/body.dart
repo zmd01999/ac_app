@@ -1,5 +1,5 @@
-import 'package:domus/config/size_config.dart';
-import 'package:domus/src/screens/home_screen/home_screen.dart';
+import 'package:maple/config/size_config.dart';
+import 'package:maple/src/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

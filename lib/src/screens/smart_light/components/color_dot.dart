@@ -1,4 +1,4 @@
-import 'package:domus/view/smart_light_view_model.dart';
+import 'package:maple/view/smart_light_view_model.dart';
 import 'package:flutter/material.dart';
 
 Widget ColorDot(

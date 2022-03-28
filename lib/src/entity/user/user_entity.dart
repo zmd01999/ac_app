@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:domus/generated/json/base/json_field.dart';
-import 'package:domus/generated/json/user_entity.g.dart';
+import 'package:maple/generated/json/base/json_field.dart';
+import 'package:maple/generated/json/user_entity.g.dart';
 
 @JsonSerializable()
 class UserEntity {

@@ -1,5 +1,5 @@
-import 'package:domus/generated/json/base/json_convert_content.dart';
-import 'package:domus/src/entity/user/user_entity.dart';
+import 'package:maple/generated/json/base/json_convert_content.dart';
+import 'package:maple/src/entity/user/user_entity.dart';
 
 UserEntity $UserEntityFromJson(Map<String, dynamic> json) {
 	final UserEntity userEntity = UserEntity();

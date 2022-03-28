@@ -1,8 +1,8 @@
-import 'package:domus/config/size_config.dart';
-import 'package:domus/src/screens/smart_light/components/date_container.dart';
-import 'package:domus/src/screens/smart_light/components/reusable_buttons.dart';
-import 'package:domus/src/screens/smart_light/components/time_container.dart';
-import 'package:domus/view/smart_light_view_model.dart';
+import 'package:maple/config/size_config.dart';
+import 'package:maple/src/screens/smart_light/components/date_container.dart';
+import 'package:maple/src/screens/smart_light/components/reusable_buttons.dart';
+import 'package:maple/src/screens/smart_light/components/time_container.dart';
+import 'package:maple/view/smart_light_view_model.dart';
 import 'package:flutter/material.dart';
 
 import 'advance_setting_container.dart';
@@ -17,8 +17,7 @@ Widget ExpandableBottomSheet(
     decoration: BoxDecoration(color: Colors.white, borderRadius: radius),
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           SizedBox(
             height: 10,

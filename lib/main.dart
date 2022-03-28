@@ -1,10 +1,10 @@
-import 'package:domus/provider/getit.dart';
-import 'package:domus/routes/routes.dart';
-import 'package:domus/service/navigation_service.dart';
-import 'package:domus/src/screens/home_screen/home_screen.dart';
-import 'package:domus/src/screens/login_screen/dashboard_screen.dart';
-import 'package:domus/src/screens/login_screen/login_screen.dart';
-import 'package:domus/src/screens/splash_screen/splash_screen.dart';
+import 'package:maple/provider/getit.dart';
+import 'package:maple/routes/routes.dart';
+import 'package:maple/service/navigation_service.dart';
+import 'package:maple/src/screens/home_screen/home_screen.dart';
+import 'package:maple/src/screens/login_screen/dashboard_screen.dart';
+import 'package:maple/src/screens/login_screen/login_screen.dart';
+import 'package:maple/src/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'config/size_config.dart';
 

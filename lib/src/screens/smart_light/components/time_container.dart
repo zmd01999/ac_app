@@ -1,4 +1,4 @@
-import 'package:domus/config/size_config.dart';
+import 'package:maple/config/size_config.dart';
 import 'package:flutter/material.dart';
 
 Widget TimeContainer(

@@ -1,5 +1,5 @@
-import 'package:domus/enum/view_state.dart';
-import 'package:domus/service/navigation_service.dart';
+import 'package:maple/enum/view_state.dart';
+import 'package:maple/service/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'getit.dart';
 

@@ -1,4 +1,4 @@
-import 'package:domus/http/dio_utils.dart';
+import 'package:maple/http/dio_utils.dart';
 import '../src/entity/user/user_entity.dart';
 class Api {
   static const String baseUrl = 'http://localhost:8080';

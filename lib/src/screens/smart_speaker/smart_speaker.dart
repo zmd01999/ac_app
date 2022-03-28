@@ -1,6 +1,6 @@
-import 'package:domus/config/size_config.dart';
-import 'package:domus/provider/base_view.dart';
-import 'package:domus/view/smart_speaker_view_model.dart';
+import 'package:maple/config/size_config.dart';
+import 'package:maple/provider/base_view.dart';
+import 'package:maple/view/smart_speaker_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'components/body.dart';

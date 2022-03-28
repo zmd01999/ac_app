@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:domus/config/size_config.dart';
+import 'package:maple/config/size_config.dart';
 import 'components/body.dart';
 
 class SplashScreen extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:domus/config/size_config.dart';
-import 'package:domus/view/smart_light_view_model.dart';
+import 'package:maple/config/size_config.dart';
+import 'package:maple/view/smart_light_view_model.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

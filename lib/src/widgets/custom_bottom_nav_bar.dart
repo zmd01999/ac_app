@@ -1,4 +1,4 @@
-import 'package:domus/view/home_screen_view_model.dart';
+import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
 
 Widget CustomBottomNavBar(HomeScreenViewModel model) {

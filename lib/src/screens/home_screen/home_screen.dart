@@ -1,7 +1,8 @@
-import 'package:domus/config/size_config.dart';
-import 'package:domus/provider/base_view.dart';
-import 'package:domus/src/widgets/custom_bottom_nav_bar.dart';
-import 'package:domus/view/home_screen_view_model.dart';
+import 'package:maple/config/size_config.dart';
+import 'package:maple/provider/base_view.dart';
+import 'package:maple/src/screens/edit_profile/edit_profile.dart';
+import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
+import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,8 +17,8 @@ class HomeScreen extends StatelessWidget {
     SizeConfig().init(context);
     return BaseView<HomeScreenViewModel>(
         onModelReady: (model) => {
-              model.generateRandomNumber(),
-            },
+          model.generateRandomNumber(),
+        },
         builder: (context, model, child) {
           return DefaultTabController(
             length: 3,
@@ -46,11 +47,18 @@ class HomeScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Color(0xffdadada),
                           borderRadius:
-                              BorderRadius.all(Radius.elliptical(45, 45)),
+                          BorderRadius.all(Radius.elliptical(45, 45)),
                         ),
-                        child: Icon(
-                          FontAwesomeIcons.solidUser,
-                          color: Colors.amber,
+                        child: IconButton(
+                          splashRadius: 25,
+                          icon: const Icon(
+                            FontAwesomeIcons.solidUser,
+                            color: Colors.amber,
+                          ),
+                          onPressed: () {
+                            // Navigator.of(context).pushNamed(EditProfile.routeName);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfile(),));
+                          },
                         ),
                       ),
                     ],

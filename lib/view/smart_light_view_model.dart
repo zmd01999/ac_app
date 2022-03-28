@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:domus/constant/constant.dart';
-import 'package:domus/provider/base_model.dart';
+import 'package:maple/constant/constant.dart';
+import 'package:maple/provider/base_model.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class SmartLightViewModel extends BaseModel {

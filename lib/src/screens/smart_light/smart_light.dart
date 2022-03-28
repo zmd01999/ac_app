@@ -1,6 +1,6 @@
-import 'package:domus/config/size_config.dart';
-import 'package:domus/provider/base_view.dart';
-import 'package:domus/view/smart_light_view_model.dart';
+import 'package:maple/config/size_config.dart';
+import 'package:maple/provider/base_view.dart';
+import 'package:maple/view/smart_light_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'components/body.dart';
@@ -28,13 +28,11 @@ class SmartLight extends StatelessWidget {
 
               ///no Shadow
               onPanelClosed: model.onPanelClosed,
-              body: Scaffold(
-                backgroundColor: Color(0xFFF2F2F2),
-                body: Body(
-                  model: model,
-                ),
+              body: Body(
+                model: model,
               ),
-              panel: model.isTappedOnColor
+              // panel:
+              panelBuilder: (sc) => model.isTappedOnColor
                   ? ColorPickerSheet(
                       context: context,
                       model: model,

@@ -1,11 +1,11 @@
-import 'package:domus/src/entity/user/login_entity.dart';
-import 'package:domus/src/entity/user/user_entity.dart';
-import 'package:domus/src/screens/home_screen/home_screen.dart';
-import 'package:domus/utils/shared_preferences_util.dart';
+import 'package:maple/src/entity/user/login_entity.dart';
+import 'package:maple/src/entity/user/user_entity.dart';
+import 'package:maple/src/screens/home_screen/home_screen.dart';
+import 'package:maple/utils/shared_preferences_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_login/flutter_login.dart';
-import 'package:domus/api/api.dart';
+import 'package:maple/api/api.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';

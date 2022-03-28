@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:domus/http/response_base_model.dart';
+import 'package:maple/http/response_base_model.dart';
 import 'response_base_model.dart';
 import 'LogInterceptors.dart';
 
