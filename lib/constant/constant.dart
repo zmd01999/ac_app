@@ -1,4 +1,4 @@
-import 'package:domus/src/models/color_model.dart';
+import 'package:domus/src/entity/color_model.dart';
 import 'package:flutter/material.dart';
 
 ///Constants for custom dialog widget

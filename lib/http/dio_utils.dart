@@ -28,7 +28,7 @@ class DioUtils {
   static const String DELETE = 'delete';
 
   ///Get请求
-  static void get <T>( {  required String url, parameters, Function(T? t)? onSuccess, Function(String error)? onError, }) async {
+  static Future<dynamic> get <T>( {  required String url, parameters, Function(T? t)? onSuccess, Function(String error)? onError, }) async {
     try {
       getResponse<T>(url: url, method : GET ,parameters: parameters, onSuccess: onSuccess, onError: onError);
     } catch (e) {
@@ -37,8 +37,8 @@ class DioUtils {
   }
 
   ///Post请求 && put delect...
-  static void post<T>(
-      {  required String url,
+  static Future post<T>(
+      { required String url,
         required String method,
         parameters,
         Function(T? t)? onSuccess,
@@ -47,15 +47,15 @@ class DioUtils {
 
     ///定义请求参数
     parameters = parameters ?? {};
-    getResponse(url: url, method: method, parameters: parameters,onSuccess: onSuccess,onError: onError);
+   return getResponse(url: url, method: method, parameters: parameters, onSuccess: onSuccess, onError: onError);
   }
 
-  static void getResponse<T>({  required String url,
+  static Future getResponse<T>({  required String url,
     required String method,
     parameters,
     Function(T? t)? onSuccess,
     Function(String error)? onError, }) async {
-    try {
+    // try {
       Response response;
       Dio dio = createInstance();
       switch(method){
@@ -88,10 +88,11 @@ class DioUtils {
       } else {
         throw Exception('statusCode:${response.statusCode}+${response.statusMessage}');
       }
-    } catch (e) {
-      print('请求出错：' + e.toString());
-      onError!(e.toString());
-    }
+    // }
+    // catch (e) {
+    //   print('请求出错：' + e.toString());
+    //   return onError!(e.toString());
+    // }
   }
   /// @ url 请求链接
   ///@ parameters 请求参数
@@ -142,12 +143,12 @@ class DioUtils {
       var options = BaseOptions(
         connectTimeout: 15000,
         receiveTimeout: 15000,
-        //responseType: ResponseType.plain,
+        responseType: ResponseType.json,
         validateStatus: (status) {
           // 不使用http状态码判断状态，使用AdapterInterceptor来处理（适用于标准REST风格）
           return true;
         },
-         baseUrl: "http://localhost:8088",
+         baseUrl: "http://localhost:8080",
       );
       dio = new Dio(options);
       /// 增加拦截器并添加heands头 token

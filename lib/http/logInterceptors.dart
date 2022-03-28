@@ -17,24 +17,23 @@ class LogInterceptors extends InterceptorsWrapper {
     print("【请求参数】${options.data.toString()}");
     dio.lock();
     await SharedPreferencesUtil.getToken().then((token) {
-      if(token==null||token.toString().isEmpty){
-        return;
+      if(token != null ){
+        Map<String,String> parms = {"Authorization" : "Bearer "+token};
+        options.headers.addAll(parms);
       }
-      Map<String,String> parms = {"Authorization" : "Bearer "+token};
-      options.headers.addAll(parms);
     });
     dio.unlock();
-    return handler.next(options);
-    // return super.onRequest(options);
+    // return options;
+    return super.onRequest(options, handler);
   }
 
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
+  dynamic onResponse(Response response, ResponseInterceptorHandler handler) {
     print("【返回statusCode】${response.statusCode}");
 //    print("【返回headers】${response.headers.toString()}");
 //    print("【返回extra】${response.extra.toString()}");
     print("【返回data】${response.data.toString()}");
-    return handler.next(response);
+    return super.onResponse(response, handler);
   }
 
   @override
