@@ -1,10 +1,10 @@
 import 'package:maple/config/size_config.dart';
 import 'package:maple/provider/base_view.dart';
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
+import 'package:maple/src/screens/menu_page/menu_screen.dart';
 import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
 import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'components/body.dart';
 
@@ -24,10 +24,11 @@ class HomeScreen extends StatelessWidget {
             length: 3,
             child: Scaffold(
               appBar: AppBar(
-                automaticallyImplyLeading: false,
+                // automaticallyImplyLeading: false,
                 toolbarHeight: getProportionateScreenHeight(60),
                 //centerTitle: true,
                 elevation: 0,
+                iconTheme: const IconThemeData(color: Colors.black),
                 title: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(
@@ -65,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                leadingWidth: getProportionateScreenWidth(170),
+                // leadingWidth: getProportionateScreenWidth(170),
                 bottom: PreferredSize(
                   child: TabBar(
                       isScrollable: true,
@@ -98,23 +99,22 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              drawer: SizedBox(
+                  width: getProportionateScreenWidth(270),
+                  child: const Menu()),
               body: TabBarView(
                 children: <Widget>[
                   Body(
                     model: model,
                   ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'To be Built Soon',
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
+                  Center(
+                    child: Text(
+                      'To be Built Soon',
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
-                  Container(
-                    child: Center(
-                      child: Text('under construction'),
-                    ),
+                  const Center(
+                    child: Text('under construction'),
                   ),
                 ],
               ),
