@@ -1,4 +1,6 @@
 import 'package:maple/config/size_config.dart';
+import 'package:maple/popups/popup_success.dart';
+import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
 import 'package:maple/src/screens/event_screen/event_screen.dart';
 import 'package:maple/src/screens/home_screen/components/music_widget.dart';
 import 'package:maple/src/screens/home_screen/components/reusable_container.dart';
@@ -12,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'add_device_widget.dart';
-import 'darkContainer.dart';
+import 'dark_container.dart';
 
 class Body extends StatelessWidget {
   final HomeScreenViewModel model;
@@ -26,18 +28,18 @@ class Body extends StatelessWidget {
           horizontal: getProportionateScreenWidth(7),
           vertical: getProportionateScreenHeight(7),
         ),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFFF2F2F2),
         ),
         child: Column(
           children: [
             Padding(
               padding: EdgeInsets.all(getProportionateScreenHeight(5)),
-              child: WeatherContainer(context: context, model: model),
+              child: WeatherContainer(model: model),
             ),
             Padding(
               padding: EdgeInsets.all(getProportionateScreenHeight(5)),
-              child: SavingsContainer(context: context, model: model),
+              child: SavingsContainer( model: model),
             ),
             Row(
               children: [
@@ -75,7 +77,7 @@ class Body extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(getProportionateScreenHeight(5)),
-              child: MusicWidget(context),
+              child: MusicWidget(),
             ),
             Row(
               children: [
@@ -113,7 +115,7 @@ class Body extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(getProportionateScreenHeight(8)),
-              child: AddNewDevice(context),
+              child: AddNewDevice(),
             ),
             ElevatedButton(
               onPressed: () {
@@ -126,6 +128,22 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
+            ElevatedButton(
+              onPressed: () => showDialog(
+                context: context,
+                builder: (context) => PopupSuccess(
+                  popupTitle: 'File deleted',
+                  popupSubtitle: "Your file has been successfully deleted.",
+                  popupActions: [
+                    PopupFilledButton(
+                      onPressed: () => Navigator.pop(context),
+                      text: 'Done',
+                    )
+                  ],
+                ),
+              ),
+              child: const Text('Popup'),
+            )
           ],
         ),
       ),

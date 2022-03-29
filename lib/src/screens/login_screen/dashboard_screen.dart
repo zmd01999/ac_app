@@ -22,7 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     with SingleTickerProviderStateMixin, TransitionRouteAware {
   Future<bool> _goToLogin(BuildContext context) {
     return Navigator.of(context)
-        .pushReplacementNamed('/login')
+        .pushReplacementNamed('/auth')
     // we dont want to pop the screen, just replace it completely
         .then((_) => false);
   }
@@ -85,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen>
             child: Hero(
               tag: Constants.logoTag,
               child: Image.asset(
-                'assets/images/ecorp.png',
+                'assets/images/thunder.png',
                 filterQuality: FilterQuality.high,
                 height: 30,
               ),

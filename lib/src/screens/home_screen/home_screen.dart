@@ -1,17 +1,29 @@
 import 'package:maple/config/size_config.dart';
 import 'package:maple/provider/base_view.dart';
+import 'package:maple/src/screens/about_screen/about_us_screen.dart';
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
 import 'package:maple/src/screens/menu_page/menu_screen.dart';
+import 'package:maple/src/screens/smart_ac/smart_ac.dart';
+import 'package:maple/src/screens/smart_light/smart_light.dart';
 import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
 import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
+
 import 'components/body.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static String routeName = '/home-screen';
+
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreen();
+
+}
+class _HomeScreen extends State<HomeScreen> {
+  List<Widget> containerList = [HomeScreen(), SmartAC(), SmartLight(), AboutUs()];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -118,9 +130,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              bottomNavigationBar: CustomBottomNavBar(model),
+              // bottomNavigationBar: CustomBottomNavBar(model),
             ),
           );
         });
   }
+
+
+
 }

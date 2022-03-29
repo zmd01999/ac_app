@@ -1,6 +1,7 @@
 import 'package:maple/src/entity/user/login_entity.dart';
 import 'package:maple/src/entity/user/user_entity.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
+import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
 import 'package:maple/utils/shared_preferences_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
@@ -273,7 +274,7 @@ class LoginScreen extends StatelessWidget {
       },
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(FadePageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => CustomBottomNavBar(),
         ));
       },
       onRecoverPassword: (name) {
