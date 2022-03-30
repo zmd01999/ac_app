@@ -12,7 +12,7 @@ class ResponseBaseModel<T>  {
     code = json['code'];
     count = json['count'];
     time = json['time'];
-    msg = json['msg'];
+    if (json['msg'] != null) msg = json['msg'];
     if (json['data'] != null && json['data']!='null') {
       data = JsonConvert.fromJsonAsT<T>(json['data']);
     }

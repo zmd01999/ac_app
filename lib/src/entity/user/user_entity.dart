@@ -6,7 +6,7 @@ import 'package:maple/generated/json/user_entity.g.dart';
 class UserEntity {
 
 	late String token;
-	@JSONField(name: "Detail")
+	@JSONField(name: "userDetail")
 	late UserDetail detail;
   
   UserEntity();

@@ -1,15 +1,11 @@
 import 'package:maple/config/size_config.dart';
 import 'package:maple/provider/base_view.dart';
-import 'package:maple/src/screens/about_screen/about_us_screen.dart';
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
 import 'package:maple/src/screens/menu_page/menu_screen.dart';
-import 'package:maple/src/screens/smart_ac/smart_ac.dart';
-import 'package:maple/src/screens/smart_light/smart_light.dart';
-import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
+import 'package:maple/utils/shared_preferences_util.dart';
 import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 
 import 'components/body.dart';
 
@@ -23,7 +19,6 @@ class HomeScreen extends StatefulWidget {
 
 }
 class _HomeScreen extends State<HomeScreen> {
-  List<Widget> containerList = [HomeScreen(), SmartAC(), SmartLight(), AboutUs()];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -50,10 +45,25 @@ class _HomeScreen extends State<HomeScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Hi, Lex',
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
+                      FutureBuilder<String?>(
+                          future: SharedPreferencesUtil.getUserName(), // a previously-obtained Future<String> or null
+                          builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+                            if(snapshot.hasData){
+                              return Text(
+                                'Hi, '+ snapshot.data.toString(),
+                                style: Theme.of(context).textTheme.headline1,
+                              );
+                            } else {
+                              return Text(
+                                'Hi, User' ,
+                                style: Theme.of(context).textTheme.headline1,
+                              );
+                            }
+                          }),
+                      // Text(
+                      //   'Hi, '+ username.toString() ,
+                      //   style: Theme.of(context).textTheme.headline1,
+                      // ),
                       Container(
                         width: 50,
                         height: 50,

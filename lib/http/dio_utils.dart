@@ -55,7 +55,7 @@ class DioUtils {
     parameters,
     Function(T? t)? onSuccess,
     Function(String error)? onError, }) async {
-    // try {
+    try {
       Response response;
       Dio dio = createInstance();
       switch(method){
@@ -88,11 +88,11 @@ class DioUtils {
       } else {
         throw Exception('statusCode:${response.statusCode}+${response.statusMessage}');
       }
-    // }
-    // catch (e) {
-    //   print('请求出错：' + e.toString());
-    //   return onError!(e.toString());
-    // }
+    }
+    catch (e) {
+      print('请求出错：' + e.toString());
+      throw Exception(e);
+    }
   }
   /// @ url 请求链接
   ///@ parameters 请求参数

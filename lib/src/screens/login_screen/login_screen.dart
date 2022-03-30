@@ -39,6 +39,11 @@ class LoginScreen extends StatelessWidget {
    userHandler(UserEntity? user) {
       print("token set succesed");
       SharedPreferencesUtil.setToken(user!.token);
+      try{
+      SharedPreferencesUtil.setUserName(user.detail.username);}
+      catch (e) {
+        print(e.toString());
+      }
       return null;
   }
 

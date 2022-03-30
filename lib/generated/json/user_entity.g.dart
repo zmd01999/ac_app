@@ -7,7 +7,7 @@ UserEntity $UserEntityFromJson(Map<String, dynamic> json) {
 	if (token != null) {
 		userEntity.token = token;
 	}
-	final UserDetail? detail = jsonConvert.convert<UserDetail>(json['Detail']);
+	final UserDetail? detail = jsonConvert.convert<UserDetail>(json['userDetail']);
 	if (detail != null) {
 		userEntity.detail = detail;
 	}
@@ -17,7 +17,7 @@ UserEntity $UserEntityFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> $UserEntityToJson(UserEntity entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['token'] = entity.token;
-	data['Detail'] = entity.detail.toJson();
+	data['userDetail'] = entity.detail.toJson();
 	return data;
 }
 
