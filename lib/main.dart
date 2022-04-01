@@ -1,8 +1,10 @@
 import 'package:maple/provider/getit.dart';
 import 'package:maple/routes/routes.dart';
 import 'package:maple/service/navigation_service.dart';
+import 'package:maple/src/screens/introduction_animation_screen/introduction_animation_screen.dart';
 import 'package:maple/src/screens/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
 
 void main() async {
   setupLocator();
@@ -75,7 +77,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routes: routes,
-      home: LoginScreen(),
+      home: IntroductionAnimationScreen(),
     );
   }
 }

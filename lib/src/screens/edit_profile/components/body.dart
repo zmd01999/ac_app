@@ -1,7 +1,9 @@
 import 'package:maple/config/size_config.dart';
+import 'package:maple/src/entity/user/user_entity.dart';
 import 'package:maple/src/screens/edit_profile/components/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:maple/utils/shared_preferences_util.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -11,12 +13,29 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  TextEditingController nameController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
+  TextEditingController nikenameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUser().then((value){
+      usernameController.text = value!.username;
+      nikenameController.text = value.nikename;
+
+    });
+    usernameController.addListener((){
+      print(usernameController.text);
+    });
+  }
+  Future<UserDetail?> getUser() async{
+    return await SharedPreferencesUtil.getUserDetail();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -107,7 +126,7 @@ class _BodyState extends State<Body> {
               children: [
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  controller: nameController,
+                  controller: usernameController,
                   autofocus: false,
                   textCapitalization: TextCapitalization.words,
                   validator: (value) {
@@ -118,6 +137,7 @@ class _BodyState extends State<Body> {
                   },
                   cursorColor: Colors.black12,
                   decoration: InputDecoration(
+                    prefixText: '账号：',
                     hintText: 'Your full name',
                     hintStyle: const TextStyle(color: Colors.grey),
                     icon: Container(
@@ -137,7 +157,7 @@ class _BodyState extends State<Body> {
                     border: const UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.black38),
                     ),
-                    enabled: true,
+                    enabled: false,
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.black38),
                     ),
@@ -154,7 +174,7 @@ class _BodyState extends State<Body> {
                 ),
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  controller: usernameController,
+                  controller: nikenameController,
                   autofocus: false,
                   keyboardType: TextInputType.text,
                   validator: (value){
@@ -165,6 +185,7 @@ class _BodyState extends State<Body> {
                   },
                   cursorColor: Colors.black12,
                   decoration: InputDecoration(
+                    prefixText: '昵称：',
                     hintText: 'Username',
                     hintStyle: const TextStyle(color: Colors.grey),
                     icon: Container(
@@ -284,24 +305,34 @@ class _BodyState extends State<Body> {
                     ),
                   ),
                 ),
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+
+                    child: Row(
+                        children: <Widget>[
+                        Expanded(
+                          child:ElevatedButton(
+                            onPressed: () {  },
+                            style: ButtonStyle(
+                                backgroundColor:  MaterialStateProperty.all(Colors.black87),                //字体
+                            ),
+                              child: const Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                                  child: Text('Save Changes', style: TextStyle(fontSize: 18, color: Colors.white70, fontWeight: FontWeight.bold),)
+                              ),
+                          )
+                        )
+                        ],
+                    ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                ),
               ],
             ),
           ),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
-          Container(
-            height: getProportionateScreenHeight(40),
-            decoration: BoxDecoration(
-              color: Colors.black87,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Center(
-                child: Text('Save Changes', style: TextStyle(fontSize: 18, color: Colors.white70, fontWeight: FontWeight.bold),)
-            ),
-          ),
         ],
-      ),
+      )
     );
   }
 }
