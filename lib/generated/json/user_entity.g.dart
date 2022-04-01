@@ -35,6 +35,10 @@ UserDetail $UserDetailFromJson(Map<String, dynamic> json) {
 	if (password != null) {
 		userDetail.password = password;
 	}
+	final String? nikename = jsonConvert.convert<String>(json['nikename']);
+	if (nikename != null) {
+		userDetail.nikename = nikename;
+	}
 	final UserDetailRole? role = jsonConvert.convert<UserDetailRole>(json['role']);
 	if (role != null) {
 		userDetail.role = role;
@@ -66,6 +70,7 @@ Map<String, dynamic> $UserDetailToJson(UserDetail entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['id'] = entity.id;
 	data['username'] = entity.username;
+	data['nikename'] = entity.nikename;
 	data['password'] = entity.password;
 	data['role'] = entity.role.toJson();
 	data['enabled'] = entity.enabled;

@@ -26,7 +26,8 @@ class UserDetail {
 
 	late int id;
 	late String username;
-	late String password;
+  late String nikename;
+  late String password;
 	late UserDetailRole role;
 	late bool enabled;
 	late bool accountNonLocked;
