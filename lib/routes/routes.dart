@@ -1,6 +1,7 @@
 import 'package:maple/src/screens/event_screen/event_screen.dart';
 import 'package:maple/src/screens/login_screen/login_screen.dart';
 import 'package:maple/src/screens/login_screen/dashboard_screen.dart';
+import 'package:maple/src/screens/menu_page/menu_screen.dart';
 
 import 'package:maple/src/screens/smart_ac/smart_ac.dart';
 import 'package:maple/src/screens/smart_fan/smart_fan.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
 
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
+import 'package:maple/src/screens/statistic_screen/statistic_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => const HomeScreen(),
@@ -23,4 +25,6 @@ final Map<String, WidgetBuilder> routes = {
   DashboardScreen.routeName: (context) => const DashboardScreen(),
   EditProfile.routeName: (context) =>  const EditProfile(),
   SetEventScreen.routeName: (context) => const SetEventScreen(),
+  StatisticScreen.routeName: (context) => const StatisticScreen(),
+  Menu.routeName: (context) => const Menu(),
 };

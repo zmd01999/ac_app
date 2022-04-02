@@ -100,7 +100,7 @@ class Body extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline1,
                       ),
                       Text(
-                        'Celcius',
+                        '摄氏度',
                         style: Theme.of(context).textTheme.headline3,
                       ),
                     ],
@@ -126,7 +126,7 @@ class Body extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    'Connected',
+                    '已关联',
                     style: Theme.of(context).textTheme.headline5,
                   )
                 ],
@@ -190,7 +190,7 @@ class Body extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Cool',
+                        '制冷',
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -211,7 +211,7 @@ class Body extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Air',
+                        '送风',
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -232,7 +232,7 @@ class Body extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Hot',
+                        '制热',
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -253,7 +253,7 @@ class Body extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Eco',
+                        '经济',
                         textAlign: TextAlign.center,
                       ),
                     ],

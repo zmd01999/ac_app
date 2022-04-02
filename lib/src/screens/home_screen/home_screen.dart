@@ -50,12 +50,12 @@ class _HomeScreen extends State<HomeScreen> {
                           builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
                             if(snapshot.hasData){
                               return Text(
-                                'Hi, '+ snapshot.data.toString(),
+                                '你好, '+ snapshot.data.toString(),
                                 style: Theme.of(context).textTheme.headline1,
                               );
                             } else {
                               return Text(
-                                'Hi, User' ,
+                                '你好!' ,
                                 style: Theme.of(context).textTheme.headline1,
                               );
                             }
@@ -97,19 +97,19 @@ class _HomeScreen extends State<HomeScreen> {
                       tabs: [
                         Tab(
                           child: Text(
-                            'Living Room',
+                            '客厅',
                             style: Theme.of(context).textTheme.headline3,
                           ),
                         ),
                         Tab(
                           child: Text(
-                            'Dining',
+                            '卧室',
                             style: Theme.of(context).textTheme.headline4,
                           ),
                         ),
                         Tab(
                           child: Text(
-                            'Kitchen',
+                            '厨房',
                             style: Theme.of(context).textTheme.headline4,
                           ),
                         ),

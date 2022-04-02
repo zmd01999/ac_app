@@ -54,8 +54,8 @@ class Body extends StatelessWidget {
                         Navigator.of(context).pushNamed(SmartLight.routeName);
                       },
                       iconAsset: 'assets/icons/svg/light.svg',
-                      device: 'Lightening',
-                      deviceCount: '4 lamps',
+                      device: '智能电灯',
+                      deviceCount: '4 个',
                     ),
                   ),
                 ),
@@ -69,8 +69,8 @@ class Body extends StatelessWidget {
                         Navigator.of(context).pushNamed(SmartAC.routeName);
                       },
                       iconAsset: 'assets/icons/svg/ac.svg',
-                      device: 'AC',
-                      deviceCount: '4 devices',
+                      device: '空调',
+                      deviceCount: '4 个',
                     ),
                   ),
                 ),
@@ -92,8 +92,8 @@ class Body extends StatelessWidget {
                         Navigator.of(context).pushNamed(SmartSpeaker.routeName);
                       },
                       iconAsset: 'assets/icons/svg/speaker.svg',
-                      device: 'Speaker',
-                      deviceCount: '1 device',
+                      device: '智能语音',
+                      deviceCount: '1 个',
                     ),
                   ),
                 ),
@@ -107,8 +107,8 @@ class Body extends StatelessWidget {
                         Navigator.of(context).pushNamed(SmartFan.routeName);
                       },
                       iconAsset: 'assets/icons/svg/fan.svg',
-                      device: 'Fan',
-                      deviceCount: '2 devices',
+                      device: '风扇',
+                      deviceCount: '2 个',
                     ),
                   ),
                 ),

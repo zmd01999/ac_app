@@ -91,7 +91,7 @@ class DarkContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    itsOn ? 'On' : 'Off',
+                    itsOn ? '开' : '关',
                     textAlign: TextAlign.left,
                     style: Theme.of(context).textTheme.headline2!.copyWith(
                           color: itsOn ? Colors.white : Colors.black,

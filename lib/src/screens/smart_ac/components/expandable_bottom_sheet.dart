@@ -38,14 +38,14 @@ Widget ExpandableBottomSheet(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Schedule',
+                    '定时',
                     style: Theme.of(context).textTheme.headline2,
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    'Set schedule room ac',
+                    '设置空调定时时间',
                     style: Theme.of(context).textTheme.headline5,
                   )
                 ],
@@ -73,7 +73,7 @@ Widget ExpandableBottomSheet(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Timer',
+                '时间',
                 style: Theme.of(context).textTheme.headline2,
               ),
               Text(

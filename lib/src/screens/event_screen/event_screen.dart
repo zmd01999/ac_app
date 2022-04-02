@@ -113,7 +113,7 @@ class _SetEventScreenState extends State<SetEventScreen> {
             );
           }
         },
-        label: const Text('Add New Event'),
+        label: const Text('添加定时任务'),
         icon: const Icon(Icons.add_rounded),
         backgroundColor: const Color(0xFF464646),
       ),
