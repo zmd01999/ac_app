@@ -19,6 +19,7 @@ class SmartFan extends StatelessWidget {
               controller: model.pc,
               backdropEnabled: true,
               boxShadow: const [],
+              minHeight: 30,
               body: Scaffold(
                 backgroundColor: const Color(0xFFF2F2F2),
                 body: Body(

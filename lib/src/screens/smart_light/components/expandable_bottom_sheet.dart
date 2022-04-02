@@ -16,11 +16,11 @@ Widget ExpandableBottomSheet(
   return Container(
     decoration: BoxDecoration(color: Colors.white, borderRadius: radius),
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0),
       child: ListView(
         children: [
           SizedBox(
-            height: 10,
+            height: 3,
           ),
           Align(
             alignment: Alignment.topCenter,

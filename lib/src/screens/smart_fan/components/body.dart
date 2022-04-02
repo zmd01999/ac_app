@@ -67,9 +67,11 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SingleChildScrollView(
+        child:Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -83,14 +85,14 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      left: getProportionateScreenWidth(19),
+                      left: getProportionateScreenWidth(4),
                       top: getProportionateScreenHeight(7),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: getProportionateScreenHeight(40),
+                          height: getProportionateScreenHeight(30),
                         ),
                         InkWell(
                             onTap: () {
@@ -155,10 +157,10 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
             Column(
               children: [
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 Container(
-                  height: getProportionateScreenHeight(260),
+                  height: getProportionateScreenHeight(270),
                   width: getProportionateScreenWidth(140),
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -292,6 +294,8 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
           ),
         ),
       ],
+    ),
+
     );
   }
 }

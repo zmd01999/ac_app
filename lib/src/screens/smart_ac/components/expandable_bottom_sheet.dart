@@ -11,7 +11,7 @@ Widget ExpandableBottomSheet(
   return Container(
     decoration: BoxDecoration(color: Colors.white, borderRadius: radius),
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

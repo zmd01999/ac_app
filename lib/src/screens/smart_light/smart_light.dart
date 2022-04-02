@@ -25,7 +25,7 @@ class SmartLight extends StatelessWidget {
                   : getProportionateScreenHeight(510),
               color: Color(0xFFF2F2F2),
               boxShadow: [],
-
+              minHeight: 40,
               ///no Shadow
               onPanelClosed: model.onPanelClosed,
               body: Body(

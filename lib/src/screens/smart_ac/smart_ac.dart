@@ -19,6 +19,7 @@ class SmartAC extends StatelessWidget {
               controller: model.pc,
               backdropEnabled: true,
               boxShadow: [],
+              minHeight: 20,
               body: Scaffold(
                 backgroundColor: Color(0xFFF2F2F2),
                 body: Body(
