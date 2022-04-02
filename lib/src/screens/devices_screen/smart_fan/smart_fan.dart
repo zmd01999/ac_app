@@ -1,5 +1,5 @@
 import 'package:maple/provider/base_view.dart';
-import 'package:maple/src/screens/smart_fan/components/expandable_bottom_sheet.dart';
+import 'package:maple/src/screens/devices_screen/smart_fan/components/expandable_bottom_sheet.dart';
 import 'package:maple/view/smart_fan_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';

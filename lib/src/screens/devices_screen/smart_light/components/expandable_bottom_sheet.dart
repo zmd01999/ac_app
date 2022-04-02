@@ -1,7 +1,7 @@
 import 'package:maple/config/size_config.dart';
-import 'package:maple/src/screens/smart_light/components/date_container.dart';
-import 'package:maple/src/screens/smart_light/components/reusable_buttons.dart';
-import 'package:maple/src/screens/smart_light/components/time_container.dart';
+import 'package:maple/src/screens/devices_screen/smart_light/components/date_container.dart';
+import 'package:maple/src/screens/devices_screen/smart_light/components/reusable_buttons.dart';
+import 'package:maple/src/screens/devices_screen/smart_light/components/time_container.dart';
 import 'package:maple/view/smart_light_view_model.dart';
 import 'package:flutter/material.dart';
 

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:maple/src/screens/about_screen/about_us_screen.dart';
+import 'package:maple/src/screens/edit_profile/profile.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
-import 'package:maple/src/screens/smart_ac/smart_ac.dart';
-import 'package:maple/src/screens/smart_fan/smart_fan.dart';
+import 'package:maple/src/screens/login_screen/dashboard_screen.dart';
+import 'package:maple/src/screens/devices_screen/smart_fan/smart_fan.dart';
+import 'package:maple/src/screens/statistic_screen/statistic_screen.dart';
 import 'package:maple/view/home_screen_view_model.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -14,7 +15,7 @@ class _CustomBottomNavBar extends State<CustomBottomNavBar> {
   int _currentIndex = 0;
   HomeScreenViewModel model = HomeScreenViewModel();
 
-  static List<Widget> _widget = <Widget>[HomeScreen(), SmartAC(), SmartFan(), AboutUs()];
+  static List<Widget> _widget = <Widget>[HomeScreen(), DashboardScreen(), SmartFan(), ProfileLandingScreen(),StatisticScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +44,11 @@ class _CustomBottomNavBar extends State<CustomBottomNavBar> {
             BottomNavigationBarItem(
               label: '',
               icon: Icon(Icons.person_rounded),
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(Icons.ac_unit_sharp),
               backgroundColor: Colors.white,
             ),
           ],

@@ -3,10 +3,10 @@ import 'package:maple/src/screens/login_screen/login_screen.dart';
 import 'package:maple/src/screens/login_screen/dashboard_screen.dart';
 import 'package:maple/src/screens/menu_page/menu_screen.dart';
 
-import 'package:maple/src/screens/smart_ac/smart_ac.dart';
-import 'package:maple/src/screens/smart_fan/smart_fan.dart';
-import 'package:maple/src/screens/smart_light/smart_light.dart';
-import 'package:maple/src/screens/smart_speaker/smart_speaker.dart';
+import 'package:maple/src/screens/devices_screen/smart_ac/smart_ac.dart';
+import 'package:maple/src/screens/devices_screen/smart_fan/smart_fan.dart';
+import 'package:maple/src/screens/devices_screen/smart_light/smart_light.dart';
+import 'package:maple/src/screens/devices_screen/smart_speaker/smart_speaker.dart';
 import 'package:maple/src/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
