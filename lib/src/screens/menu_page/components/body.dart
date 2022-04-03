@@ -26,7 +26,7 @@ class Body extends StatelessWidget {
                 Row(
                   children: [
                     const Text(
-                      'Menu',
+                      '菜单',
                       style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                     ),
                     const Spacer(),
