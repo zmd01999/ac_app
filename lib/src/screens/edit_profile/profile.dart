@@ -1,6 +1,8 @@
 import 'package:maple/config/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:maple/src/screens/about_screen/about_us_screen.dart';
+import 'package:maple/src/screens/login_screen/components/custom_route.dart';
 
 class ProfileLandingScreen extends StatefulWidget {
   const ProfileLandingScreen({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class _ProfileState extends State<ProfileLandingScreen> {
               child: Row(
                 children: [
                   Text(
-                    "Profile",
+                    "我的",
                     style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.w600,
@@ -66,21 +68,21 @@ class _ProfileState extends State<ProfileLandingScreen> {
               height: getProportionateScreenHeight(6),
             ),
             Text(
-              "Ashish",
+              "用户",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w300,
               ),
             ),
             Text(
-              "Smart User",
+              "使用者",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w300,
               ),
             ),
             SizedBox(
-              height: getProportionateScreenHeight(50),
+              height: getProportionateScreenHeight(15),
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -91,47 +93,60 @@ class _ProfileState extends State<ProfileLandingScreen> {
                   Container(
                     child: ProfileListItems(
                       iconPath: 'assets/icons/svg/lock.svg',
-                      itemName: "Privacy",
+                      itemName: "隐私",
                       cta: () {},
                     ),
                   ),
                   SizedBox(
-                    height: getProportionateScreenHeight(35),
+                    height: getProportionateScreenHeight(20),
                   ),
                   Container(
                     child: ProfileListItems(
                       iconPath: 'assets/icons/svg/favourite.svg',
-                      itemName: "Favourites",
+                      itemName: "我的习惯",
                       cta: () {},
                     ),
                   ),
                   SizedBox(
-                    height: getProportionateScreenHeight(35),
+                    height: getProportionateScreenHeight(20),
                   ),
                   Container(
                     child: ProfileListItems(
                       iconPath: 'assets/icons/svg/help.svg',
-                      itemName: "Help Center",
+                      itemName: "帮助中心",
                       cta: () {},
                     ),
                   ),
                   SizedBox(
-                    height: getProportionateScreenHeight(35),
+                    height: getProportionateScreenHeight(20),
                   ),
                   Container(
                     child: ProfileListItems(
                       iconPath: 'assets/icons/svg/gift.svg',
-                      itemName: "Invite a friend",
+                      itemName: "邀请有礼",
                       cta: () {},
                     ),
                   ),
                   SizedBox(
-                    height: getProportionateScreenHeight(35),
+                    height: getProportionateScreenHeight(20),
+                  ),
+                  Container(
+                    child: ProfileListItems(
+                      iconPath: 'assets/icons/svg/gift.svg',
+                      itemName: "关于",
+                      cta: () {
+                        Navigator.push(context,  MaterialPageRoute(builder: (context) => const AboutUs(),));
+
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(20),
                   ),
                   Container(
                     child: ProfileListItems(
                       iconPath: 'assets/icons/svg/sign_out.svg',
-                      itemName: "Sign out",
+                      itemName: "注销",
                       cta: () {},
                     ),
                   ),
@@ -148,7 +163,7 @@ class _ProfileState extends State<ProfileLandingScreen> {
 class ProfileListItems extends StatelessWidget {
   final String iconPath;
   final String itemName;
-  final Function cta;
+  final VoidCallback cta;
   const ProfileListItems({
     Key? key,
     required this.iconPath,
@@ -158,25 +173,31 @@ class ProfileListItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => cta,
-      child: Container(
-        child: Row(
-          children: [
-            SvgPicture.asset(
-              iconPath,
+    return Material(
+      child: Ink(
+        child: InkWell(
+          onTap: () {
+            cta();
+          },
+          child: Container(
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  iconPath,
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(25),
+                ),
+                Text(
+                  itemName,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              ],
             ),
-            SizedBox(
-              width: getProportionateScreenWidth(25),
-            ),
-            Text(
-              itemName,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
