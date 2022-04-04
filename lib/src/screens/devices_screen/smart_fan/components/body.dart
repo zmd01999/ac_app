@@ -160,7 +160,7 @@ class _BodyState extends State<Body> with TickerProviderStateMixin {
                   height: 30,
                 ),
                 Container(
-                  height: getProportionateScreenHeight(270),
+                  height: getProportionateScreenHeight(255),
                   width: getProportionateScreenWidth(140),
                   decoration: BoxDecoration(
                     color: Colors.white,

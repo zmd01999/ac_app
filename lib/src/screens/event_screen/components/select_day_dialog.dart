@@ -1,4 +1,5 @@
-import 'package:maple/src/screens/event_screen/components/alert_dialog_theme.dart';
+import 'package:maple/popups/popup_warning.dart';
+import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
 import 'package:flutter/material.dart';
 
 class SelectDayDialog extends StatelessWidget {
@@ -6,16 +7,13 @@ class SelectDayDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Please Select a Day!'),
-      titleTextStyle: AlertDialogTheme.titleTextStyle,
-      actions: <Widget>[
-        TextButton(
+    return PopupWarning(
+      popupTitle: '请选择一个时间!',
+      popupSubtitle: 'Select by tapping on a day',
+      popupActions: <Widget>[
+        PopupFilledButton(
           onPressed: () => Navigator.pop(context),
-          child: Text(
-            'Ok',
-            style: AlertDialogTheme.buttonTextStyle,
-          ),
+          text: '确定',
         ),
       ],
     );

@@ -39,7 +39,7 @@ class _SetEventScreenState extends State<SetEventScreen> {
         title: Padding(
           padding: const EdgeInsets.only(top: 20, left: 15),
           child: Text(
-            'Set Events',
+            '定时任务',
             style: AlertDialogTheme.appBarTextStyle,
           ),
         ),

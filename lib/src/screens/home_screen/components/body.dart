@@ -127,22 +127,6 @@ class Body extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () => showDialog(
-                context: context,
-                builder: (context) => PopupSuccess(
-                  popupTitle: 'File deleted',
-                  popupSubtitle: "Your file has been successfully deleted.",
-                  popupActions: [
-                    PopupFilledButton(
-                      onPressed: () => Navigator.pop(context),
-                      text: 'Done',
-                    )
-                  ],
-                ),
-              ),
-              child: const Text('Popup'),
-            )
           ],
         ),
       ),
