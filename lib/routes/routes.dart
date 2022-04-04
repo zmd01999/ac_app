@@ -1,3 +1,4 @@
+import 'package:maple/src/screens/devices_screen/device_total/device_total.dart';
 import 'package:maple/src/screens/event_screen/event_screen.dart';
 import 'package:maple/src/screens/login_screen/login_screen.dart';
 import 'package:maple/src/screens/login_screen/dashboard_screen.dart';
@@ -27,4 +28,5 @@ final Map<String, WidgetBuilder> routes = {
   SetEventScreen.routeName: (context) => const SetEventScreen(),
   StatisticScreen.routeName: (context) => const StatisticScreen(),
   Menu.routeName: (context) => const Menu(),
+  DeviceTotal.routeName:  (context) =>  DeviceTotal(),
 };
