@@ -42,7 +42,7 @@ class Body extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: getProportionateScreenHeight(80),
+                  height: getProportionateScreenHeight(40),
                 ),
                 const MenuList(),
               ],

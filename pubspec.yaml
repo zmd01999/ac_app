@@ -32,6 +32,8 @@ dependencies:
       url: https://github.com/adarsh-technocrat/flutter-icons.git
       branch: null-safety-migration
   fl_chart: ^0.50.0
+  flare_flutter: ^2.0.3
+  awesome_circular_chart: ^1.0.0
 
 dev_dependencies:
   flutter_test:

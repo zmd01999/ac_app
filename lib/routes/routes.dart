@@ -8,6 +8,7 @@ import 'package:maple/src/screens/devices_screen/smart_ac/smart_ac.dart';
 import 'package:maple/src/screens/devices_screen/smart_fan/smart_fan.dart';
 import 'package:maple/src/screens/devices_screen/smart_light/smart_light.dart';
 import 'package:maple/src/screens/devices_screen/smart_speaker/smart_speaker.dart';
+import 'package:maple/src/screens/savings_screen/savings_screen.dart';
 import 'package:maple/src/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
@@ -29,4 +30,5 @@ final Map<String, WidgetBuilder> routes = {
   StatisticScreen.routeName: (context) => const StatisticScreen(),
   Menu.routeName: (context) => const Menu(),
   DeviceTotal.routeName:  (context) =>  DeviceTotal(),
+  SavingsScreen.routeName:  (context) => const SavingsScreen(),
 };

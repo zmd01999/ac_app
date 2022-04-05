@@ -1,6 +1,7 @@
 import 'package:maple/src/screens/menu_page/components/list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:maple/config/size_config.dart';
+import 'package:maple/src/screens/savings_screen/savings_screen.dart';
 
 
 class MenuList extends StatelessWidget {
@@ -23,6 +24,16 @@ class MenuList extends StatelessWidget {
             iconPath: 'assets/icons/menu_icons/devices.svg',
             itemName: '设备',
             function: (){},
+          ),
+          SizedBox(
+            height: getProportionateScreenHeight(10),
+          ),
+          MenuListItems(
+              iconPath: 'assets/icons/menu_icons/savings.svg',
+              itemName: '节能',
+              function: () {
+                Navigator.of(context).pushNamed(SavingsScreen.routeName);
+              }
           ),
           SizedBox(
             height: getProportionateScreenHeight(10),
