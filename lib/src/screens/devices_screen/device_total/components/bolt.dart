@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 
 class BoltModel {
   final double topBefore;
@@ -13,8 +14,8 @@ class BoltModel {
 List<BoltModel> bolts = [
   BoltModel(90, 104, 50, "assets/images/flash_left.png"),
   BoltModel(180, 32, 68, "assets/images/flash_left.png"),
-  BoltModel(84, 284, 60, "assets/images/flash_right.png"),
-  BoltModel(200, 352, 64, "assets/images/flash_right.png"),
+  BoltModel(84, 230, 60, "assets/images/flash_right.png"),
+  BoltModel(200, 260, 64, "assets/images/flash_right.png"),
 ];
 
 class BoltWidget extends StatelessWidget {
@@ -38,7 +39,7 @@ class BoltWidget extends StatelessWidget {
         padding: EdgeInsets.all(5),
         child: Image.asset(
           boltModel.img,
-          color: Colors.white,
+          color: MyTheme.blue,
         ),
       ),
     );

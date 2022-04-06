@@ -6,8 +6,10 @@ import 'mytheme.dart';
 class CustomSwitch extends StatelessWidget {
   final bool isOpened;
   final VoidCallback onTap;
+  final bool? totalOpend;
 
-  const CustomSwitch({ Key? key, required this.isOpened, required this.onTap}) : super(key: key);
+  const CustomSwitch({ Key? key, required this.isOpened, required this.onTap,  this.totalOpend}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -21,7 +23,7 @@ class CustomSwitch extends StatelessWidget {
             AnimatedPositioned(
               duration: Duration(milliseconds: 240),
               top: 2.5,
-              left: isOpened ? 41 : 2,
+              left: totalOpend??true ? (isOpened ? 41 : 2) : 2,
               child: Container(
                 width: 30,
                 height: 30,
@@ -35,7 +37,7 @@ class CustomSwitch extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(44),
-          color: isOpened ? MyTheme.pink : MyTheme.lightGrey,
+          color: totalOpend??true ? (isOpened ? MyTheme.switchl : MyTheme.lightGrey) : MyTheme.lightGrey,
         ),
       ),
     );

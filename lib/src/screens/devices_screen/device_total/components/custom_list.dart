@@ -14,19 +14,20 @@ class CustomTileModel {
 }
 
 List<CustomTileModel> tiles = [
-  CustomTileModel("美的", "Online", "assets/images/my_lamp.png"),
-  CustomTileModel("三星", "Online", "assets/images/phlilips_lamp.png"),
-  CustomTileModel("奥克斯", "Sleeping", "assets/images/camera.png"),
-  CustomTileModel("格力", "Online", "assets/images/mi_fan.png"),
+  CustomTileModel("美的", "Sleeping", "assets/images/ac.png"),
+  CustomTileModel("三星", "Sleeping", "assets/images/ac.png"),
+  CustomTileModel("奥克斯", "Sleeping", "assets/images/ac.png"),
+  CustomTileModel("格力", "Sleeping", "assets/images/ac.png"),
 ];
 class CustomListTile extends StatefulWidget {
 
   const CustomListTile({
-    Key? key, required this.tileModel, required this.w,  this.onTap
+    Key? key, required this.tileModel, required this.w,  this.onTap, this.totalSwitch
   }) : super(key: key);
   final CustomTileModel tileModel;
   final double w;
   final VoidCallback? onTap ;
+  final bool? totalSwitch;
 
   @override
   _CustomListTile createState() => _CustomListTile();
@@ -34,12 +35,38 @@ class CustomListTile extends StatefulWidget {
 
 class _CustomListTile extends State<CustomListTile> {
 
-  bool isOpened = false;
-  onTapProxy(){
-    setState(() {
-      isOpened = !isOpened;
-    });
+   late bool isOpened;
+   late String deviceState;
+  @override
+  void initState() {
+    print("enter init");
+    if (widget.totalSwitch == false || widget.tileModel.subtitle == "Sleeping") {
+      isOpened = false;
+      deviceState = "Sleeping";
+    } else {
+      isOpened =  true;
+      deviceState = "Online";
+    }
+
+    super.initState();
+  }
+
+   @override
+   void ready()
+   {
+
+   }
+   onTapProxy(){
     widget.onTap!();
+    setState(() {
+      if (widget.totalSwitch == null || widget.totalSwitch == true){
+        isOpened = !isOpened;
+        if (isOpened == true) deviceState = "Online";
+        else deviceState = "Sleeping";
+      }
+
+    });
+
   }
   @override
   Widget build(BuildContext context) {
@@ -58,8 +85,8 @@ class _CustomListTile extends State<CustomListTile> {
       child: Row(
         children: <Widget>[
           Container(
-            width: 64,
-            height: 20,
+            width: 55,
+            height: 45,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
@@ -68,7 +95,7 @@ class _CustomListTile extends State<CustomListTile> {
               ),
             ),
           ),
-          SizedBox(width: 16),
+          SizedBox(width: 45),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -95,9 +122,9 @@ class _CustomListTile extends State<CustomListTile> {
                   )
                 ],
               ),
-              SizedBox(height: 3),
+              SizedBox(height: 1),
               Text(
-                widget.tileModel.subtitle,
+                widget.totalSwitch??true ? deviceState : "Sleeping",
                 style: TextStyle(
                   fontSize: 16,
                   color: MyTheme.grey,
@@ -106,7 +133,7 @@ class _CustomListTile extends State<CustomListTile> {
             ],
           ),
           Spacer(),
-          CustomSwitch(isOpened:isOpened, onTap: onTapProxy),
+          CustomSwitch(isOpened:isOpened, totalOpend: widget.totalSwitch??true, onTap: onTapProxy),
         ],
       ),
     );

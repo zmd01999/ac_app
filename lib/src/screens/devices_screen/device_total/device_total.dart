@@ -67,7 +67,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                     //
                     //   );
                     // }).toList(),
-                    AllList(w: w,),
+                    AllList(w: w, totalSwitch: menuOpen,),
                     SizedBox(height: 36),
                     Container(
                       width: 54,
@@ -115,7 +115,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                       height: menuOpen ? 900 : 300,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: MyTheme.pink,
+                        color: MyTheme.mainC,
                       ),
                     ),
                   ),
@@ -175,7 +175,7 @@ class _deviceTotalState extends State<DeviceTotal> {
             //字体
             AnimatedPositioned(
               duration: Duration(milliseconds: 360),
-              top: menuOpen ? 300 : 164,
+              top: menuOpen ? 320 : 164,
               left: 0,
               child: Container(
                 width: w,
@@ -247,7 +247,7 @@ class _deviceTotalState extends State<DeviceTotal> {
             //! Gateway
             AnimatedPositioned(
               duration: Duration(milliseconds: 360),
-              top: menuOpen ? 300 : 240,
+              top: menuOpen ? 320 : 240,
               left: 24,
               child: Container(
                 width: w - 48,
@@ -255,12 +255,12 @@ class _deviceTotalState extends State<DeviceTotal> {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      width: (w - 48) / 2,
+                      width: (w - 40) / 2,
                       height: 240,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("assets/images/thunder.png"),
-                          fit: BoxFit.cover,
+                          image: AssetImage("assets/images/device2.png"),
+                          fit: BoxFit.scaleDown,
                         ),
                         borderRadius: BorderRadius.horizontal(
                           left: Radius.circular(24),
@@ -268,7 +268,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                       ),
                     ),
                     Container(
-                      width: (w - 48) / 2,
+                      width: (w - 56) / 2,
                       height: 240,
                       child: Column(
                         children: <Widget>[
@@ -355,23 +355,23 @@ class _deviceTotalState extends State<DeviceTotal> {
             ),
             SafeArea(
               child: Padding(
-                padding: const EdgeInsets.only(top: 35),
+                padding: const EdgeInsets.only(top: 0),
                 child: Container(
                   width: w,
-                  padding: EdgeInsets.symmetric(horizontal: 35),
+                  padding: EdgeInsets.symmetric(horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Image.asset(
-                        "assets/images/brand_logo.png",
-                        color: Colors.white,
-                        height: 32,
-                      ),
-                      Image.asset(
-                        "assets/images/menu_lines.png",
-                        color: Colors.white,
-                        height: 32,
-                      ),
+                      // Image.asset(
+                      //   "assets/images/woodwind.png",
+                      //   color: Colors.green,
+                      //   height: 120,
+                      // ),
+                      // Image.asset(
+                      //   "assets/images/menu_lines.png",
+                      //   color: Colors.white,
+                      //   height: 32,
+                      // ),
                     ],
                   ),
                 ),
