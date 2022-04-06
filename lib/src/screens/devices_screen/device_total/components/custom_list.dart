@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:maple/src/screens/devices_screen/smart_ac/smart_ac.dart';
 
 import 'custom_switch.dart';
@@ -63,6 +64,8 @@ class _CustomListTile extends State<CustomListTile> {
         isOpened = !isOpened;
         if (isOpened == true) deviceState = "Online";
         else deviceState = "Sleeping";
+      } else {
+        SmartDialog.showToast("总控未开启");
       }
 
     });

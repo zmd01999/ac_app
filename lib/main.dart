@@ -1,9 +1,7 @@
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:maple/provider/getit.dart';
 import 'package:maple/routes/routes.dart';
 import 'package:maple/service/navigation_service.dart';
-import 'package:maple/src/screens/home_screen/home_screen.dart';
-import 'package:maple/src/screens/introduction_screen/introduction_screen.dart';
-import 'package:maple/src/screens/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
 
@@ -23,11 +21,27 @@ class MyApp extends StatelessWidget {
       navigatorKey: getIt<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       themeMode: themeMode,
+      navigatorObservers: [FlutterSmartDialog.observer],
+      builder: FlutterSmartDialog.init(
+        // //default toast widget
+        // toastBuilder: (String msg, AlignmentGeometry alignment) {
+        //   return CustomToastWidget(msg: msg, alignment: alignment);
+        // },
+        // //default loading widget
+        // loadingBuilder: (String msg, Color background) {
+        //   return CustomLoadingWidget(msg: msg, background: background);
+        // },
+      ),
       theme: ThemeData(
         fontFamily: 'Nato Sans',
+        textSelectionTheme: const TextSelectionThemeData(
+          // Set Up for TextFields
+          cursorColor: Colors.grey,
+          selectionColor: Colors.blueGrey,
+        ),
         colorScheme: const ColorScheme.light(
           primary: Color(0xFFF2F2F2),
-          //secondary: Color(0xFFF4AE47),
+          secondary: Color(0xFFF4AE47),
           surface: Color(0xFFC4C4C4),
           background: Color(0xFFFFFFFF),
           error: Color(0xFFB00020),

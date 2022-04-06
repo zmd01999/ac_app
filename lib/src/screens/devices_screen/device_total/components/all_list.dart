@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'custom_list.dart';
 
@@ -19,7 +21,24 @@ class AllList extends StatelessWidget  {
           itemCount: tiles.length,
           itemExtent: 75.0,
           itemBuilder: (context, index) =>
-              CustomListTile(tileModel: tiles[index], w: this.w, totalSwitch: totalSwitch, onTap: (){print("optap");},),
+            AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 400),
+                child: SlideAnimation(
+                    verticalOffset: 50.0,
+                    child: FadeInAnimation(
+                        child:  CustomListTile(
+                          tileModel: tiles[index], w: this.w, totalSwitch: totalSwitch,
+                          onTap: () async {
+                          if (totalSwitch != false){
+                            SmartDialog.showLoading();
+                            await Future.delayed(Duration(milliseconds: 300));
+                            SmartDialog.dismiss();
+                          }
+                          },),
+                    ),
+                ),
+            )
         ),
     );
   }
