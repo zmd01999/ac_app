@@ -225,6 +225,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  flutter_smart_dialog:
+    dependency: "direct main"
+    description:
+      name: flutter_smart_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.4.1"
+  flutter_staggered_animations:
+    dependency: "direct main"
+    description:
+      name: flutter_staggered_animations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -256,6 +270,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.2.0"
+  giffy_dialog:
+    dependency: "direct main"
+    description:
+      name: giffy_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.8.0"
   http:
     dependency: transitive
     description:
@@ -283,6 +304,13 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
+    version: "0.8.5"
+  image_picker_android:
+    dependency: transitive
+    description:
+      name: image_picker_android
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.8.4+11"
   image_picker_for_web:
     dependency: transitive
@@ -291,6 +319,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.6"
+  image_picker_ios:
+    dependency: transitive
+    description:
+      name: image_picker_ios
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.4+11"
   image_picker_platform_interface:
     dependency: transitive
     description:

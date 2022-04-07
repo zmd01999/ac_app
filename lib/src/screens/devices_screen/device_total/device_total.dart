@@ -1,8 +1,10 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/all_list.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
+import 'package:maple/src/screens/devices_screen/device_total/components/new_device_method.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'components/bolt.dart';
@@ -25,6 +27,7 @@ class _deviceTotalState extends State<DeviceTotal> {
 
   bool menuOpen = true;
   bool textCtrl = false;
+  bool dismiss = false;
 
   String _animation = "open";
 
@@ -73,7 +76,12 @@ class _deviceTotalState extends State<DeviceTotal> {
                       width: 54,
                       height: 54,
                       child: Center(
-                        child: Icon(Icons.add, color: MyTheme.grey),
+                        child: IconButton(
+                        icon: Icon(Icons.add, color: MyTheme.grey),
+                          onPressed: () {
+                          SmartDialog.show(widget: NewDeviceMethod(), tag: "newDevice");
+                          },
+                        )
                       ),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
