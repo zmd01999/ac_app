@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:maple/provider/getit.dart';
+import 'package:maple/service/navigation_service.dart';
+import 'package:maple/src/screens/devices_screen/device_total/add_device/add_device_wifi.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
+import 'package:maple/src/screens/devices_screen/device_total/add_device/qrcode.dart';
 
 class NewDeviceMethod extends StatelessWidget {
 
@@ -12,7 +17,7 @@ class NewDeviceMethod extends StatelessWidget {
        buttonOkColor: MyTheme.mainC,
        buttonCancelText:Text("无线连接"),
        buttonCancelColor:MyTheme.indigo,
-       key: Key("NetworkDialog"),
+       key: Key("deviceDialog"),
        image: Image.asset(
          'assets/gif/qrcode.gif',
          fit: BoxFit.contain,
@@ -29,7 +34,9 @@ class NewDeviceMethod extends StatelessWidget {
          textAlign: TextAlign.center,
        ),
        onOkButtonPressed: () {
-
+         getIt<NavigationService>().navigatorKey.currentState?.pushNamed(QrCode.routeName);
+         SmartDialog.dismiss(tag: "newDevice");
+         // Navigator.push(context,  MaterialPageRoute(builder: (context) => const QrCode(),));
        },
        onCancelButtonPressed: () {
          SmartDialog.show(widget: NewDeviceMethod1(), tag: "wifi");
@@ -48,7 +55,7 @@ class NewDeviceMethod1 extends StatelessWidget {
       buttonOkColor: MyTheme.mainC,
       buttonCancelText:Text("取消"),
       buttonCancelColor:MyTheme.indigo,
-      key: Key("NetworkDialog"),
+      key: Key("wifiDialog"),
       image: Image.asset(
         'assets/gif/wifi1.gif',
         fit: BoxFit.contain,
@@ -65,6 +72,8 @@ class NewDeviceMethod1 extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
       onOkButtonPressed: () {
+        getIt<NavigationService>().navigatorKey.currentState?.pushNamed(WifiDevice.routeName);
+        SmartDialog.dismiss(tag: "wifi");
       },
       onCancelButtonPressed: () {
         SmartDialog.dismiss(tag: "wifi");

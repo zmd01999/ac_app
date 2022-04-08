@@ -34,6 +34,11 @@ dependencies:
   fl_chart: ^0.50.0
   flare_flutter: ^2.0.3
   awesome_circular_chart: ^1.0.0
+  flutter_staggered_animations: ^1.0.0
+  flutter_smart_dialog: ^3.4.1
+  giffy_dialog: ^1.8.0
+  barcode_scan2: ^4.2.0
+
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +63,7 @@ flutter:
     - assets/icons/menu_icons/
     - assets/Lottie/
     - assets/introduction_animation/
+    - assets/gif/
 
   fonts:
     - family: "Noto Sans"

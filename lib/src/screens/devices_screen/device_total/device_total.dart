@@ -5,10 +5,8 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/all_list.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/new_device_method.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'components/bolt.dart';
-import 'components/custom_list.dart';
 import 'components/custom_switch.dart';
 
 class DeviceTotal extends StatefulWidget {
@@ -55,21 +53,6 @@ class _deviceTotalState extends State<DeviceTotal> {
                       duration: Duration(milliseconds: 240),
                       height: menuOpen ? 180 : 130,
                     ),
-                    // ...tiles.map((e) {
-                    //   return  CustomListTile(
-                    //     w: w,
-                    //     img: e.img,
-                    //     title: e.title,
-                    //     subtitle: e.subtitle,
-                    //     onTap: (){
-                    //       setState(() {
-                    //         print("ontap");
-                    //       });
-                    //
-                    //     },
-                    //
-                    //   );
-                    // }).toList(),
                     AllList(w: w, totalSwitch: menuOpen,),
                     SizedBox(height: 36),
                     Container(
@@ -79,7 +62,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                         child: IconButton(
                         icon: Icon(Icons.add, color: MyTheme.grey),
                           onPressed: () {
-                          SmartDialog.show(widget: NewDeviceMethod(), tag: "newDevice");
+                          SmartDialog.show(widget: NewDeviceMethod(), tag: "newDevice",);
                           },
                         )
                       ),
