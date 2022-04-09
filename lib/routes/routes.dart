@@ -1,4 +1,5 @@
 import 'package:maple/src/screens/devices_screen/device_total/add_device/add_device_wifi.dart';
+import 'package:maple/src/screens/devices_screen/device_total/add_device/search_wifi.dart';
 import 'package:maple/src/screens/devices_screen/device_total/device_total.dart';
 import 'package:maple/src/screens/event_screen/event_screen.dart';
 import 'package:maple/src/screens/login_screen/login_screen.dart';
@@ -35,4 +36,5 @@ final Map<String, WidgetBuilder> routes = {
   SavingsScreen.routeName:  (context) => const SavingsScreen(),
   QrCode.routeName:  (context) => const QrCode(),
   WifiDevice.routeName:  (context) => const WifiDevice(),
+  SearchWifi.routeName:  (context) => const SearchWifi(),
 };

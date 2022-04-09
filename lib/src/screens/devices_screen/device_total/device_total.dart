@@ -34,6 +34,15 @@ class _deviceTotalState extends State<DeviceTotal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //修改颜色
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Container(
         width: w,
         height: h,
@@ -47,7 +56,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                     AnimatedContainer(
                       duration: Duration(milliseconds: 240),
                       width: w,
-                      height: menuOpen ? 315 : 300,
+                      height: menuOpen ? 260 : 235,
                     ),
                     AnimatedContainer(
                       duration: Duration(milliseconds: 240),

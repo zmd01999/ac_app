@@ -38,7 +38,9 @@ dependencies:
   flutter_smart_dialog: ^3.4.1
   giffy_dialog: ^1.8.0
   barcode_scan2: ^4.2.0
-
+  wifi_scan: ^0.2.1
+  select_dialog: ^2.0.0
+  flutter_countdown_timer: ^4.1.0
 
 dev_dependencies:
   flutter_test:
