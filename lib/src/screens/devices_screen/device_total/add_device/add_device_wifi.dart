@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:maple/config/size_config.dart';
+import 'package:maple/popups/popup_warning.dart';
+import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
 import 'package:maple/src/screens/devices_screen/device_total/add_device/search_wifi.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 import 'package:select_dialog/select_dialog.dart';
@@ -308,7 +310,22 @@ class _WifiDeviceState extends State<WifiDevice> with WidgetsBindingObserver{
                       Expanded(
                           child:ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushNamed(SearchWifi.routeName);
+                              print(wifiNameController.text+"000"+passwordController.text );
+                              if(wifiNameController.text.isEmpty || passwordController.text.isEmpty){
+                                SmartDialog.show(
+                                    widget: PopupWarning(
+                                      popupTitle: '请完整填写Wi-Fi信息',
+                                      popupActions: <Widget>[
+                                        PopupFilledButton(
+                                          onPressed: () => Navigator.pop(context),
+                                          text: '确定',
+                                        ),
+                                      ],
+                                    )
+                                );
+                              } else{
+                                Navigator.of(context).pushNamed(SearchWifi.routeName);
+                              }
                             },
                             style: ButtonStyle(
                               backgroundColor:  MaterialStateProperty.all(MyTheme.mainC),                //字体
