@@ -217,9 +217,6 @@ class _WifiDeviceState extends State<WifiDevice> with WidgetsBindingObserver{
                                           );
                                         },
                                       );
-
-
-
                           },
                         ),
                         icon: Container(
@@ -310,7 +307,6 @@ class _WifiDeviceState extends State<WifiDevice> with WidgetsBindingObserver{
                       Expanded(
                           child:ElevatedButton(
                             onPressed: () {
-                              print(wifiNameController.text+"000"+passwordController.text );
                               if(wifiNameController.text.isEmpty || passwordController.text.isEmpty){
                                 SmartDialog.show(
                                     widget: PopupWarning(

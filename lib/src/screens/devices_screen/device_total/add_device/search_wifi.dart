@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/countdown_timer_controller.dart';
 import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:loading/indicator/ball_spin_fade_loader_indicator.dart';
 import 'package:loading/loading.dart';
+import 'package:maple/src/screens/devices_screen/device_total/add_device/components/add_finished_wifi.dart';
 import 'package:maple/src/screens/devices_screen/device_total/add_device/components/radar_painter.dart';
 import 'package:maple/src/screens/devices_screen/device_total/add_device/components/water_painter.dart';
 
@@ -37,15 +39,22 @@ class _SearchWifiState extends State<SearchWifi>  with SingleTickerProviderState
     });
   }
 
-  changeState(time)  {
-      if(time < 25 && time > 20){
+  changeState(time) async {
+      if(time < 55 && time > 52){
         setState(() {
           activeForm = 1;
         });
-      } else if (time < 20) {
+      } else if (time < 53 && time > 52) {
         setState(() {
           activeForm = 2;
         });
+      } else if (time < 51){
+        SmartDialog.showLoading();
+        await Future.delayed(Duration(milliseconds: 300));
+        SmartDialog.dismiss();
+        controller.disposeTimer();
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const AddFinishedWf(),));
+
       }
   }
 
