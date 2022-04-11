@@ -1,14 +1,24 @@
+import 'package:barcode_scan2/gen/protos/protos.pb.dart';
+import 'package:barcode_scan2/model/android_options.dart';
+import 'package:barcode_scan2/model/scan_options.dart';
+import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:maple/provider/getit.dart';
 import 'package:maple/service/navigation_service.dart';
 import 'package:maple/src/screens/devices_screen/device_total/add_device/add_device_wifi.dart';
+import 'package:maple/src/screens/devices_screen/device_total/add_device/components/add_finished_wifi.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
-import 'package:maple/src/screens/devices_screen/device_total/add_device/qrcode.dart';
 
 class NewDeviceMethod extends StatelessWidget {
+  ScanResult? scanResult;
+
+  final _flashOnController = TextEditingController(text: 'Flash on');
+  final _flashOffController = TextEditingController(text: 'Flash off');
+  final _cancelController = TextEditingController(text: 'Cancel');
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +43,45 @@ class NewDeviceMethod extends StatelessWidget {
          '请扫描设备或包装上的二维码来添加设备',
          textAlign: TextAlign.center,
        ),
-       onOkButtonPressed: () {
-         getIt<NavigationService>().navigatorKey.currentState?.pushNamed(QrCode.routeName);
+       // TODO:_scan获得二维码数据之后Http请求云，获得设备信息等
+       onOkButtonPressed: () async {
+         _scan();
          SmartDialog.dismiss(tag: "newDevice");
-         // Navigator.push(context,  MaterialPageRoute(builder: (context) => const QrCode(),));
+         getIt<NavigationService>().navigatorKey.currentState?.pushNamed(AddFinishedWf.routeName);
        },
        onCancelButtonPressed: () {
          SmartDialog.show(widget: NewDeviceMethod1(), tag: "wifi");
          SmartDialog.dismiss(tag: "newDevice");
        },
      );
+  }
+  Future<void> _scan() async {
+    try {
+      final result = await BarcodeScanner.scan(
+        options: ScanOptions(
+          strings: {
+            'cancel': _cancelController.text,
+            'flash_on': _flashOnController.text,
+            'flash_off': _flashOffController.text,
+          },
+          useCamera: -1,
+          autoEnableFlash: false,
+          android: AndroidOptions(
+            aspectTolerance:  0.00,
+            useAutoFocus: true,
+          ),
+        ),
+      );
+      result.rawContent;
+    } on PlatformException catch (e) {
+        scanResult = ScanResult(
+          type: ResultType.Error,
+          format: BarcodeFormat.unknown,
+          rawContent: e.code == BarcodeScanner.cameraAccessDenied
+              ? 'The user did not grant the camera permission!'
+              : 'Unknown error: $e',
+        );
+    }
   }
 
 }
