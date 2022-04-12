@@ -137,8 +137,7 @@ class _BodyState extends State<Body> {
                   },
                   cursorColor: Colors.black12,
                   decoration: InputDecoration(
-                    prefixText: '账号：',
-                    hintText: 'Your full name',
+                    labelText: '账号',
                     hintStyle: const TextStyle(color: Colors.grey),
                     icon: Container(
                       height: 50,
@@ -185,8 +184,7 @@ class _BodyState extends State<Body> {
                   },
                   cursorColor: Colors.black12,
                   decoration: InputDecoration(
-                    prefixText: '昵称：',
-                    hintText: 'Username',
+                    labelText: '昵称',
                     hintStyle: const TextStyle(color: Colors.grey),
                     icon: Container(
                       height: 50,
@@ -231,7 +229,7 @@ class _BodyState extends State<Body> {
                   },
                   cursorColor: Colors.black12,
                   decoration: InputDecoration(
-                    hintText: 'Your Email',
+                    labelText:"邮件",
                     hintStyle: const TextStyle(color: Colors.grey),
                     icon: Container(
                       height: 50,
@@ -276,7 +274,7 @@ class _BodyState extends State<Body> {
                   },
                   cursorColor: Colors.black12,
                   decoration: InputDecoration(
-                    hintText: 'Your Phone',
+                    labelText: '手机',
                     hintStyle: const TextStyle(color: Colors.grey),
                     icon: Container(
                       height: 50,

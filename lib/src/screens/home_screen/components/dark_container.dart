@@ -59,9 +59,9 @@ class DarkContainer extends StatelessWidget {
                       color: itsOn ? Colors.amber : const Color(0xFF808080),
                     ),
                   ),
-                  const Icon(
+                   Icon(
                     Icons.star_rounded,
-                    color: Color(0xFF808080),
+                    color: itsOn ? Colors.amber : Color(0xFF808080),
                   ),
                 ],
               ),

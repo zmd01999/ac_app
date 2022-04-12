@@ -1,4 +1,5 @@
 import 'package:maple/config/size_config.dart';
+import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 import 'package:maple/view/smart_ac_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -102,6 +103,7 @@ class Body extends StatelessWidget {
                       Text(
                         '摄氏度',
                         style: Theme.of(context).textTheme.headline3,
+
                       ),
                     ],
                   ),
@@ -135,7 +137,7 @@ class Body extends StatelessWidget {
                 inactiveThumbColor: Color(0xFFE4E4E4),
                 inactiveTrackColor: Colors.white,
                 activeColor: Colors.white,
-                activeTrackColor: Color(0xFF464646),
+                activeTrackColor: MyTheme.switchl,
                 value: model.isACon,
                 onChanged: (value) {
                   model.acSwitch(value);
@@ -183,7 +185,7 @@ class Body extends StatelessWidget {
                       SvgPicture.asset(
                         'assets/icons/svg/cool.svg',
                         color: model.isSelected[0]
-                            ? Colors.white
+                            ? MyTheme.mainC
                             : Color(0xFF808080),
                         height: getProportionateScreenHeight(
                           22,
@@ -192,6 +194,9 @@ class Body extends StatelessWidget {
                       Text(
                         '制冷',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: model.isSelected[0] ? MyTheme.mainC : Colors.black
+                        ),
                       ),
                     ],
                   ),
@@ -204,7 +209,7 @@ class Body extends StatelessWidget {
                       SvgPicture.asset(
                         'assets/icons/svg/air.svg',
                         color: model.isSelected[1]
-                            ? Colors.white
+                            ? MyTheme.mainC
                             : Color(0xFF808080),
                         height: getProportionateScreenHeight(
                           22,
@@ -213,6 +218,9 @@ class Body extends StatelessWidget {
                       Text(
                         '送风',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: model.isSelected[1] ? MyTheme.mainC : Colors.black
+                        ),
                       ),
                     ],
                   ),
@@ -225,7 +233,7 @@ class Body extends StatelessWidget {
                       SvgPicture.asset(
                         'assets/icons/svg/sun.svg',
                         color: model.isSelected[2]
-                            ? Colors.white
+                            ? MyTheme.mainC
                             : Color(0xFF808080),
                         height: getProportionateScreenHeight(
                           22,
@@ -234,6 +242,9 @@ class Body extends StatelessWidget {
                       Text(
                         '制热',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: model.isSelected[2] ? MyTheme.mainC : Colors.black
+                        ),
                       ),
                     ],
                   ),
@@ -246,7 +257,7 @@ class Body extends StatelessWidget {
                       SvgPicture.asset(
                         'assets/icons/svg/eco.svg',
                         color: model.isSelected[3]
-                            ? Colors.white
+                            ? MyTheme.mainC
                             : Color(0xFF808080),
                         height: getProportionateScreenHeight(
                           22,
@@ -255,6 +266,9 @@ class Body extends StatelessWidget {
                       Text(
                         '经济',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: model.isSelected[3] ? MyTheme.mainC : Colors.black
+                        ),
                       ),
                     ],
                   ),

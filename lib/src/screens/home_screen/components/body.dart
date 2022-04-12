@@ -1,11 +1,9 @@
 import 'package:maple/config/size_config.dart';
-import 'package:maple/popups/popup_success.dart';
-import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
+import 'package:maple/src/screens/devices_screen/device_total/device_total.dart';
 import 'package:maple/src/screens/event_screen/event_screen.dart';
 import 'package:maple/src/screens/home_screen/components/music_widget.dart';
 import 'package:maple/src/screens/home_screen/components/savings_container.dart';
 import 'package:maple/src/screens/home_screen/components/weather_container.dart';
-import 'package:maple/src/screens/devices_screen/smart_ac/smart_ac.dart';
 import 'package:maple/src/screens/devices_screen/smart_fan/smart_fan.dart';
 import 'package:maple/src/screens/devices_screen/smart_light/smart_light.dart';
 import 'package:maple/src/screens/devices_screen/smart_speaker/smart_speaker.dart';
@@ -64,7 +62,7 @@ class Body extends StatelessWidget {
                       itsOn: model.isACON,
                       switchButton: model.acSwitch,
                       onTap: () {
-                        Navigator.of(context).pushNamed(SmartAC.routeName);
+                        Navigator.of(context).pushNamed(DeviceTotal.routeName);
                       },
                       iconAsset: 'assets/icons/svg/ac.svg',
                       device: '空调',
