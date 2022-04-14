@@ -17,7 +17,6 @@ class DioUtils {
     return httpUtil;
   }
 
-  static const String API_PREFIX = 'http://localhost/api/v1';
   static const int CONNECT_TIMEOUT = 10000;
   static const int RECEIVE_TIMEOUT = 10000;
 
@@ -148,7 +147,7 @@ class DioUtils {
           // 不使用http状态码判断状态，使用AdapterInterceptor来处理（适用于标准REST风格）
           return true;
         },
-         baseUrl: "http://localhost:8080",
+         baseUrl: "http://192.168.3.8:8080",
       );
       dio = new Dio(options);
       /// 增加拦截器并添加heands头 token

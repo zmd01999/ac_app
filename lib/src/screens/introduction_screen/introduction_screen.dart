@@ -5,9 +5,8 @@ import 'package:maple/src/screens/introduction_screen/components/relax_view.dart
 import 'package:maple/src/screens/introduction_screen/components/splash_view.dart';
 import 'package:maple/src/screens/introduction_screen/components/top_back_skip_view.dart';
 import 'package:flutter/material.dart';
-import 'package:maple/src/screens/login_screen/login_screen.dart';
+import 'package:maple/src/screens/login_screen/login/login_screen.dart';
 
-import '../login_screen/components/custom_route.dart';
 
 class IntroductionAnimationScreen extends StatefulWidget {
   const IntroductionAnimationScreen({Key? key}) : super(key: key);
@@ -109,8 +108,7 @@ class _IntroductionAnimationScreenState
 
   void _signUpClick() {
     // Navigator.pop(context);
-    Navigator.of(context).pushReplacement(FadePageRoute(
-      builder: (context) => LoginScreen(),
-    ));
+    Navigator.of(context).pushReplacementNamed(LoginScreen.routeName
+    );
   }
 }

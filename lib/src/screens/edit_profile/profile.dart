@@ -2,7 +2,6 @@ import 'package:maple/config/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:maple/src/screens/about_screen/about_us_screen.dart';
-import 'package:maple/src/screens/login_screen/components/custom_route.dart';
 
 class ProfileLandingScreen extends StatefulWidget {
   const ProfileLandingScreen({Key? key}) : super(key: key);
