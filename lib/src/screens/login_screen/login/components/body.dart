@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:maple/api/api.dart';
 import 'package:maple/popups/popup_error.dart';
+import 'package:maple/popups/popup_warning.dart';
+import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
 import 'package:maple/src/entity/user/login_entity.dart';
 import 'package:maple/src/entity/user/user_entity.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
@@ -42,15 +44,21 @@ class _BodyState extends State<Body> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              height: 150,
+              width: 150,
+              child: Image.asset("assets/images/logo.png"),
+            ),
+            SizedBox(width: 30,),
             Text(
-              "LOGIN",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              "木风",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
             ),
             SizedBox(height: size.height * 0.03),
-            SvgPicture.asset(
-              "assets/icons/login.svg",
-              height: size.height * 0.35,
-            ),
+
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
               controller: usernameController,
@@ -64,18 +72,35 @@ class _BodyState extends State<Body> {
             RoundedButton(
               text: "登陆",
               press: () async{
-                LoginEntity user = new LoginEntity(name: usernameController.text, password: passwordController.text);
-                SmartDialog.showLoading();
 
-                Api.login(data: jsonEncode(user), onSuccess: userHandler).then((value){
-                  print(value);
-                  if(value== null){
-                    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-                    SmartDialog.dismiss();
-                  } else {
-                    SmartDialog.show(widget: PopupError(popupTitle:value));
-                  }
-                });
+                if( !usernameController.text.isEmpty || !passwordController.text.isEmpty) {
+                  LoginEntity user = new LoginEntity(name: usernameController.text, password: passwordController.text);
+                  SmartDialog.showLoading();
+
+                  Api.login(data: jsonEncode(user), onSuccess: userHandler).then((value){
+                    print(value);
+                    if(value== null){
+                      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+                      SmartDialog.dismiss();
+                    } else {
+                      SmartDialog.show(widget: PopupError(popupTitle:value));
+                      SmartDialog.dismiss();
+                    }
+                  });
+                } else {
+                  SmartDialog.show(
+                      widget: PopupWarning(
+                        popupTitle: '请输入账号和密码',
+                        popupActions: <Widget>[
+                          PopupFilledButton(
+                            onPressed: () => SmartDialog.dismiss(),
+                            text: '确定',
+                          ),
+                        ],
+                      )
+                  );
+                }
+
               },
             ),
             SizedBox(height: size.height * 0.03),

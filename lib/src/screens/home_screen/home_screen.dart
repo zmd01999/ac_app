@@ -2,6 +2,7 @@ import 'package:maple/config/size_config.dart';
 import 'package:maple/provider/base_view.dart';
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
 import 'package:maple/src/screens/menu_page/menu_screen.dart';
+import 'package:maple/utils/color_loader.dart';
 import 'package:maple/utils/shared_preferences_util.dart';
 import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
@@ -130,10 +131,7 @@ class _HomeScreen extends State<HomeScreen> {
                     model: model,
                   ),
                   Center(
-                    child: Text(
-                      'To be Built Soon',
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
+                    child: ColorLoader(radius: 20,dotRadius: 8,)
                   ),
                   const Center(
                     child: Text('under construction'),

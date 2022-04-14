@@ -6,7 +6,6 @@ import 'package:maple/src/screens/login_screen/login/components/already_have_an_
 import 'package:maple/src/screens/login_screen/login/components/rounded_button.dart';
 import 'package:maple/src/screens/login_screen/login/components/rounded_input_field.dart';
 import 'package:maple/src/screens/login_screen/login/components/rounded_password_field.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:maple/src/screens/login_screen/sign_up/components/social_icon.dart';
 
 class Body extends StatefulWidget {
@@ -27,15 +26,14 @@ class _BodyState extends State<Body> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "SIGNUP",
-              style: TextStyle(fontWeight: FontWeight.bold),
+            SizedBox(height: size.height * 0.15),
+            Container(
+              height: 150,
+              width: 150,
+              child: Image.asset("assets/images/pen.png"),
             ),
-            SizedBox(height: size.height * 0.03),
-            SvgPicture.asset(
-              "assets/icons/signup.svg",
-              height: size.height * 0.35,
-            ),
+            SizedBox(height: size.height * 0.05),
+
             RoundedInputField(
               controller: usernameController,
               hintText: "账号",
@@ -46,7 +44,7 @@ class _BodyState extends State<Body> {
               onChanged: (value) {},
             ),
             RoundedButton(
-              text: "SIGNUP",
+              text: "注册",
               press: () {},
             ),
             SizedBox(height: size.height * 0.03),
