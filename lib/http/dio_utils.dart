@@ -82,7 +82,7 @@ class DioUtils {
           /// 返回泛型Bean
           onSuccess(bean.data);
         }else{
-          onError!(bean.msg.toString());
+          return bean.data;
         }
       } else {
         throw Exception('statusCode:${response.statusCode}+${response.statusMessage}');

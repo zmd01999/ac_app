@@ -1,6 +1,7 @@
 import 'package:maple/config/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 
 class DarkContainer extends StatelessWidget {
   final String iconAsset;
@@ -29,7 +30,7 @@ class DarkContainer extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: itsOn
-              ? const Color.fromRGBO(0, 0, 0, 1)
+              ? MyTheme.indigo
               : const Color(0xffededed),
         ),
         child: Padding(
@@ -49,14 +50,14 @@ class DarkContainer extends StatelessWidget {
                     height: 50,
                     decoration: BoxDecoration(
                       color: itsOn
-                          ? const Color.fromRGBO(45, 45, 45, 1)
+                          ? MyTheme.grey
                           : const Color(0xffdadada),
                       borderRadius:
                           const BorderRadius.all(Radius.elliptical(45, 45)),
                     ),
                     child: SvgPicture.asset(
                       iconAsset,
-                      color: itsOn ? Colors.amber : const Color(0xFF808080),
+                      color: itsOn ? Colors.amberAccent : const Color(0xFF808080),
                     ),
                   ),
                    Icon(
@@ -78,8 +79,8 @@ class DarkContainer extends StatelessWidget {
                   Text(
                     deviceCount,
                     textAlign: TextAlign.left,
-                    style: const TextStyle(
-                        color: Color.fromRGBO(166, 166, 166, 1),
+                    style:  TextStyle(
+                        color:  itsOn ? Colors.white :Colors.grey ,
                         fontSize: 13,
                         letterSpacing: 0,
                         fontWeight: FontWeight.normal,
@@ -105,7 +106,7 @@ class DarkContainer extends StatelessWidget {
                       padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: itsOn ? Colors.black : const Color(0xffd6d6d6),
+                        color: itsOn ? MyTheme.indigo : const Color(0xffd6d6d6),
                         border: Border.all(
                           color: const Color.fromRGBO(255, 255, 255, 1),
                           width: itsOn ? 2 : 0,

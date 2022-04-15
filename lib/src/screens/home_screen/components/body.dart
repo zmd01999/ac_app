@@ -1,3 +1,5 @@
+import 'package:flutter_weather_bg/bg/weather_bg.dart';
+import 'package:flutter_weather_bg/utils/weather_type.dart';
 import 'package:maple/config/size_config.dart';
 import 'package:maple/src/screens/devices_screen/device_total/device_total.dart';
 import 'package:maple/src/screens/event_screen/event_screen.dart';
@@ -72,10 +74,10 @@ class Body extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.all(getProportionateScreenHeight(5)),
-              child: MusicWidget(),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.all(getProportionateScreenHeight(5)),
+            //   child: MusicWidget(),
+            // ),
             Row(
               children: [
                 Expanded(

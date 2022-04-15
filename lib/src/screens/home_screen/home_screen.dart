@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:maple/config/size_config.dart';
 import 'package:maple/provider/base_view.dart';
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'components/body.dart';
+import 'components/weather_am.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/home-screen';
@@ -52,12 +54,12 @@ class _HomeScreen extends State<HomeScreen> {
                             if(snapshot.hasData){
                               return Text(
                                 '你好, '+ snapshot.data.toString(),
-                                style: Theme.of(context).textTheme.headline1,
+                                style: Theme.of(context).textTheme.headline2,
                               );
                             } else {
                               return Text(
                                 '你好!' ,
-                                style: Theme.of(context).textTheme.headline1,
+                                style: Theme.of(context).textTheme.headline2,
                               );
                             }
                           }),
@@ -131,10 +133,20 @@ class _HomeScreen extends State<HomeScreen> {
                     model: model,
                   ),
                   Center(
-                    child: ColorLoader(radius: 20,dotRadius: 8,)
+                    child: Text("wait"),
                   ),
-                  const Center(
-                    child: Text('under construction'),
+                   Center(
+                    child:  Container(
+                      width: 250,
+                      height: 290,
+                      child: FlareActor(
+                        "assets/gif/login.flr",
+                        fit: BoxFit.contain,
+                        alignment: Alignment.center,
+                        animation: "Untitled",
+                      ),
+
+                    ),
                   ),
                 ],
               ),
