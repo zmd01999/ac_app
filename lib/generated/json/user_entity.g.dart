@@ -31,13 +31,13 @@ UserDetail $UserDetailFromJson(Map<String, dynamic> json) {
 	if (username != null) {
 		userDetail.username = username;
 	}
-	final String? password = jsonConvert.convert<String>(json['password']);
-	if (password != null) {
-		userDetail.password = password;
-	}
 	final String? nikename = jsonConvert.convert<String>(json['nikename']);
 	if (nikename != null) {
 		userDetail.nikename = nikename;
+	}
+	final String? password = jsonConvert.convert<String>(json['password']);
+	if (password != null) {
+		userDetail.password = password;
 	}
 	final UserDetailRole? role = jsonConvert.convert<UserDetailRole>(json['role']);
 	if (role != null) {

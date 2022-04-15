@@ -79,14 +79,11 @@ class _BodyState extends State<Body> {
 
                   Api.login(data: jsonEncode(user), onSuccess: userHandler).then((value){
                     print(value);
-                    if(value== null){
-                      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-                      SmartDialog.dismiss();
-                    } else {
-                      SmartDialog.show(widget: PopupError(popupTitle:value));
-                      SmartDialog.dismiss();
-                    }
-                  });
+                    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+                    SmartDialog.dismiss();
+                  }).catchError((e) {
+                      SmartDialog.show(widget: PopupError(popupTitle: e));}
+                  );
                 } else {
                   SmartDialog.show(
                       widget: PopupWarning(
@@ -106,14 +103,7 @@ class _BodyState extends State<Body> {
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
+                Navigator.of(context).pushReplacementNamed(SignUpScreen.routeName);
               },
             ),
           ],

@@ -24,6 +24,7 @@ class RoundedInputField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (value) {
           if(value!.isEmpty || value.trim().isEmpty) {
             return '请输入账号';

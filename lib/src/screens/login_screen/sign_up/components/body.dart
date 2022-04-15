@@ -1,4 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:maple/api/api.dart';
+import 'package:maple/popups/popup_error.dart';
+import 'package:maple/popups/popup_success.dart';
+import 'package:maple/popups/popup_warning.dart';
+import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
+import 'package:maple/src/entity/user/login_entity.dart';
 import 'package:maple/src/screens/login_screen/login/login_screen.dart';
 import 'package:maple/src/screens/login_screen/sign_up/components/background.dart';
 import 'package:maple/src/screens/login_screen/sign_up/components/or_divider.dart';
@@ -45,20 +54,52 @@ class _BodyState extends State<Body> {
             ),
             RoundedButton(
               text: "注册",
-              press: () {},
+              press: () async{
+                if( !usernameController.text.isEmpty || !passwordController.text.isEmpty) {
+                    LoginEntity user = new LoginEntity(name: usernameController.text, password: passwordController.text);
+                    SmartDialog.showLoading();
+                    Api.register(data: jsonEncode(user)).then((value){
+                      if (value == null) {
+                        SmartDialog.show(widget: PopupSuccess(
+                          popupTitle: "注册成功",
+                          popupSubtitle: "点击跳转登录页面",
+                          popupActions: [
+                            PopupFilledButton(
+                              onPressed: (){
+                                Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+                                SmartDialog.dismiss();
+                              },
+                              text: '确定',
+                            ),
+                          ],
+                        ));
+                        SmartDialog.dismiss();
+                      } else {
+                        SmartDialog.dismiss();
+                        SmartDialog.show(widget: PopupError(popupTitle:value));
+                      }
+                    });
+                } else {
+                  SmartDialog.show(
+                      widget: PopupWarning(
+                        popupTitle: '请完整填写账号和密码',
+                        popupActions: <Widget>[
+                          PopupFilledButton(
+                            onPressed: () => SmartDialog.dismiss(),
+                            text: '确定',
+                          ),
+                        ],
+                      )
+                  );
+                }
+
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
               login: false,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
+                Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
               },
             ),
             OrDivider(),
