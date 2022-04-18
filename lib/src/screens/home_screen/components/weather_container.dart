@@ -32,7 +32,7 @@ class _WeatherContainer extends State<WeatherContainer> {
         Container(
           height: getProportionateScreenHeight(100),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(20),
             color: const Color(0xFFFFFFFF),
           ),
           child: FutureBuilder<WeatherEntity?>(

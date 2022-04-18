@@ -1,6 +1,7 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:maple/config/size_config.dart';
 import 'package:maple/provider/base_view.dart';
+import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
 import 'package:maple/src/screens/menu_page/menu_screen.dart';
 import 'package:maple/utils/color_loader.dart';
@@ -71,7 +72,7 @@ class _HomeScreen extends State<HomeScreen> {
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xffdadada),
+                          color: MyTheme.blue,
                           borderRadius:
                           BorderRadius.all(Radius.elliptical(45, 45)),
                         ),
@@ -79,7 +80,7 @@ class _HomeScreen extends State<HomeScreen> {
                           splashRadius: 25,
                           icon: const Icon(
                             FontAwesomeIcons.solidUser,
-                            color: Colors.amber,
+                            color: Colors.amberAccent,
                           ),
                           onPressed: () {
                             // Navigator.of(context).pushNamed(EditProfile.routeName);

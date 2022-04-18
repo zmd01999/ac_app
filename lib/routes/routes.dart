@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
 import 'package:maple/src/screens/edit_profile/edit_profile.dart';
 import 'package:maple/src/screens/statistic_screen/statistic_screen.dart';
+import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
 
 final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => const HomeScreen(),
@@ -35,5 +36,6 @@ final Map<String, WidgetBuilder> routes = {
   SearchWifi.routeName:  (context) => const SearchWifi(),
   AddFinishedWf.routeName:  (context) => const AddFinishedWf(),
   SignUpScreen.routeName:  (context) => const SignUpScreen(),
+  CustomBottomNavBar.routeName:  (context) => const CustomBottomNavBar()
 
 };

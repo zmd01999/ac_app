@@ -8,11 +8,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesUtil {
   //token字符串
   static const String USER_HEAD = "user_head";
+  static const String HEAD_PIC = "head_pic";
 
 
   static Future setUser(String userJson) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.remove(USER_HEAD);
     sharedPreferences.setString(USER_HEAD, userJson);
+  }
+
+  static void clear() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.clear();
   }
   //获取token值
   static Future<String?> getToken() async {
@@ -26,6 +33,10 @@ class SharedPreferencesUtil {
 
   }
 
+  static Future setCache(String key ,String str) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString(key, str);
+  }
   //获取呢称
   static Future<String?> getUserName() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
