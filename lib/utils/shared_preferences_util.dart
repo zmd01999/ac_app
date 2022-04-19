@@ -37,6 +37,11 @@ class SharedPreferencesUtil {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString(key, str);
   }
+
+  static Future<String?> getCache(String key) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString(key);
+  }
   //获取呢称
   static Future<String?> getUserName() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
