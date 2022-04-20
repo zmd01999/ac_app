@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:maple/src/screens/savings_screen/components/savings_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:maple/config/size_config.dart';
@@ -27,9 +28,11 @@ class Body extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        const Text(
-                          '节能',
-                          style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                        SizedBox(width: 80,),
+                         Text(
+                          '节能收益',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                         ),
                         const Spacer(),
                         SvgPicture.asset(

@@ -29,55 +29,22 @@ class _WeatherContainer extends State<WeatherContainer> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          height: getProportionateScreenHeight(100),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: const Color(0xFFFFFFFF),
-          ),
-          child: FutureBuilder<WeatherEntity?>(
-              future: Api.getWeather(), // a previously-obtained Future<String> or null
-              builder: (BuildContext context, AsyncSnapshot<WeatherEntity?> snapshot) {
-                if(snapshot.hasData){
-                  String time = snapshot.data!.lives[0].reporttime.split(" ")[1].split(":")[0];
-                  WeatherType? weatherType = mapToWeather(snapshot.data!.lives[0].weather, time);
-                  return WeatherItem(weatherType: weatherType!, weatherEntity: snapshot.data!);
-                } else {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        '28°C',
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
-                      Text(
-                        '多云',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      SizedBox(
-                        height: getProportionateScreenHeight(5),
-                      ),
-                      Text(
-                        '2022 4 月 2 日',
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      Text(
-                        '湖南，长沙',
-                        style: Theme.of(context).textTheme.headline5,
-                      )
-                    ],
-                  );
-                }
-              })
-
-        ),
-        // Image.asset(
-        //   'assets/images/weather/${widget.model.randomNumber}.png',
-        //   height: getProportionateScreenHeight(110),
-        //   width: getProportionateScreenWidth(140),
-        //   fit: BoxFit.contain,
-        // ),
-
+        FutureBuilder<WeatherEntity?>(
+            future: Api.getWeather(), // a previously-obtained Future<String> or null
+            builder: (BuildContext context, AsyncSnapshot<WeatherEntity?> snapshot) {
+              if(snapshot.hasData){
+                String time = snapshot.data!.lives[0].reporttime.split(" ")[1].split(":")[0];
+                WeatherType? weatherType = mapToWeather(snapshot.data!.lives[0].weather, time);
+                return WeatherItem(weatherType: weatherType!, weatherEntity: snapshot.data!);
+              } else {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    bottom: getProportionateScreenHeight(73),
+                  ),
+                  child: CircularProgressIndicator(color: Colors.grey.shade300,),
+                );
+              }
+            })
       ],
     );
   }

@@ -12,7 +12,16 @@ class SavingsScreen extends StatelessWidget {
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
         },
-        child: const Scaffold(
+        child:  Scaffold(
+          extendBodyBehindAppBar: true,
+
+          appBar: AppBar(
+            iconTheme: IconThemeData(
+              color: Colors.black, //修改颜色
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
           backgroundColor: Color(0xFFF2F2F2),
           body: Body(),
         ),

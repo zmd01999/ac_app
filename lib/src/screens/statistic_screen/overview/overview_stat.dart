@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:maple/src/screens/savings_screen/savings_screen.dart';
 
 import 'conponents/stat_bottom_app_bar.dart';
 import 'conponents/stats_device_consumption_chart.dart';
@@ -30,14 +31,20 @@ class OverViewStats extends StatelessWidget {
             ),
           ),
         ),
-        actions: const [
+        actions:  [
           Padding(
             padding: EdgeInsets.only(top: 20, right: 15),
-            child: Icon(
-              Icons.bolt,
-              size: 36,
-              color: Colors.black,
-            ),
+            child: IconButton(
+                icon: Icon(
+                  Icons.bolt,
+                  size: 36,
+                  color: Colors.black,
+                ),
+              onPressed: () {
+                Navigator.of(context).pushNamed(SavingsScreen.routeName);
+              },
+            )
+
           ),
         ],
         elevation: 0,

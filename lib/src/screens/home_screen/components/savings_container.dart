@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:maple/config/size_config.dart';
 import 'package:maple/view/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class SavingsContainer extends StatelessWidget {
           height: getProportionateScreenHeight(85),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: const Color(0xFFFFFFFF),
+            color:  Color(0xFFFFFFFF),
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -39,7 +40,7 @@ class SavingsContainer extends StatelessWidget {
                     Text(
                       '+35%',
                       style: Theme.of(context).textTheme.headline1!.copyWith(
-                            color: Colors.green,
+                            color: Colors.green.shade300,
                           ),
                     ),
                     SizedBox(
@@ -60,11 +61,15 @@ class SavingsContainer extends StatelessWidget {
         ),
         Positioned(
           right: 0,
-          child: Image.asset(
-            'assets/images/thunder.png',
-            height: getProportionateScreenHeight(100),
+          child: Container(
+            child: FlareActor(
+              "assets/gif/reciclar.flr",
+              fit: BoxFit.contain,
+              alignment: Alignment.center,
+              animation: "recycle1_loop",
+            ),
+            height: getProportionateScreenHeight(80),
             width: getProportionateScreenWidth(140),
-            fit: BoxFit.contain,
           ),
         ),
       ],

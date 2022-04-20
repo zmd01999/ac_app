@@ -42,6 +42,14 @@ class _deviceTotalState extends State<DeviceTotal> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        actions: [
+           IconButton(
+              onPressed: (){
+                SmartDialog.show(widget: NewDeviceMethod(), tag: "newDevice",);
+              },
+               color: Colors.black,
+              icon: Icon(Icons.add)),
+        ],
       ),
       body: Container(
         width: w,
@@ -56,14 +64,14 @@ class _deviceTotalState extends State<DeviceTotal> {
                     AnimatedContainer(
                       duration: Duration(milliseconds: 240),
                       width: w,
-                      height: menuOpen ? 260 : 235,
+                      height: menuOpen ? 220 : 185,
                     ),
                     AnimatedContainer(
                       duration: Duration(milliseconds: 240),
                       height: menuOpen ? 180 : 130,
                     ),
                     AllList(w: w, totalSwitch: menuOpen,),
-                    SizedBox(height: 36),
+                    SizedBox(height: 20),
                     Container(
                       width: 54,
                       height: 54,
@@ -188,55 +196,55 @@ class _deviceTotalState extends State<DeviceTotal> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          AnimatedDefaultTextStyle(
-                            child: Text(
-                              "Stan's",
-                            ),
-                            style: TextStyle(
-                              fontSize: textCtrl ? 36 : 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            duration: Duration(milliseconds: 360),
-                          ),
-                          AnimatedDefaultTextStyle(
-                            child: Text(
-                              "Office",
-                            ),
-                            style: TextStyle(
-                              fontSize: textCtrl ? 54 : 36,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                            ),
-                            duration: Duration(milliseconds: 360),
-                          ),
+                          // AnimatedDefaultTextStyle(
+                          //   child: Text(
+                          //     "Stan's",
+                          //   ),
+                          //   style: TextStyle(
+                          //     fontSize: textCtrl ? 36 : 24,
+                          //     color: Colors.white,
+                          //     fontWeight: FontWeight.w300,
+                          //   ),
+                          //   duration: Duration(milliseconds: 360),
+                          // ),
+                          // AnimatedDefaultTextStyle(
+                          //   child: Text(
+                          //     "Office",
+                          //   ),
+                          //   style: TextStyle(
+                          //     fontSize: textCtrl ? 54 : 36,
+                          //     color: Colors.white,
+                          //     fontWeight: FontWeight.w900,
+                          //   ),
+                          //   duration: Duration(milliseconds: 360),
+                          // ),
                         ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
-                          AnimatedDefaultTextStyle(
-                            child: Text(
-                              "23 indoor",
-                            ),
-                            style: TextStyle(
-                              fontSize: textCtrl ? 36 : 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            duration: Duration(milliseconds: 360),
-                          ),
-                          AnimatedDefaultTextStyle(
-                            child: Text(
-                              "Door closed",
-                            ),
-                            style: TextStyle(
-                              fontSize: textCtrl ? 36 : 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            duration: Duration(milliseconds: 360),
-                          ),
+                          // AnimatedDefaultTextStyle(
+                          //   child: Text(
+                          //     "23 indoor",
+                          //   ),
+                          //   style: TextStyle(
+                          //     fontSize: textCtrl ? 36 : 24,
+                          //     color: Colors.white,
+                          //     fontWeight: FontWeight.w300,
+                          //   ),
+                          //   duration: Duration(milliseconds: 360),
+                          // ),
+                          // AnimatedDefaultTextStyle(
+                          //   child: Text(
+                          //     "Door closed",
+                          //   ),
+                          //   style: TextStyle(
+                          //     fontSize: textCtrl ? 36 : 24,
+                          //     color: Colors.white,
+                          //     fontWeight: FontWeight.w300,
+                          //   ),
+                          //   duration: Duration(milliseconds: 360),
+                          // ),
                         ],
                       ),
                     ],
@@ -247,7 +255,7 @@ class _deviceTotalState extends State<DeviceTotal> {
             //! Gateway
             AnimatedPositioned(
               duration: Duration(milliseconds: 360),
-              top: menuOpen ? 320 : 240,
+              top: menuOpen ? 280 : 180,
               left: 24,
               child: Container(
                 width: w - 48,
@@ -284,7 +292,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                           ),
                           Spacer(),
                           Text(
-                            "Online",
+                            menuOpen?"Online":"Off",
                             style: TextStyle(
                               color: MyTheme.grey,
                               fontSize: 20,
@@ -299,13 +307,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                             ),
                           ),
                           Spacer(),
-                          Text(
-                            "Alarming",
-                            style: TextStyle(
-                              color: MyTheme.grey,
-                              fontSize: 22,
-                            ),
-                          ),
+
                           Spacer(),
                           CustomSwitch(
                             isOpened: menuOpen,
