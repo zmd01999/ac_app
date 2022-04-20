@@ -1,12 +1,15 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:maple/src/screens/edit_profile/profile.dart';
+import 'package:maple/src/screens/edit_profile/profil_page.dart';
 import 'package:maple/src/screens/home_screen/home_screen.dart';
-import 'package:maple/src/screens/login_screen/dashboard_screen.dart';
-import 'package:maple/src/screens/devices_screen/smart_fan/smart_fan.dart';
 import 'package:maple/src/screens/statistic_screen/statistic_screen.dart';
+import 'package:maple/utils/shared_preferences_util.dart';
 import 'package:maple/view/home_screen_view_model.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
+  static String routeName = "/navbar";
+  const CustomBottomNavBar({Key? key}) : super(key: key);
+
   @override
   _CustomBottomNavBar createState() => _CustomBottomNavBar();
 }
@@ -15,8 +18,17 @@ class _CustomBottomNavBar extends State<CustomBottomNavBar> {
   int _currentIndex = 0;
   HomeScreenViewModel model = HomeScreenViewModel();
 
-  static List<Widget> _widget = <Widget>[HomeScreen(), DashboardScreen(), SmartFan(), ProfileLandingScreen(),StatisticScreen()];
-
+  static List<Widget> _widget = <Widget>[HomeScreen(), StatScreen(), ProfileLandingScreen(),];
+  @override
+  void initState() {
+    SharedPreferencesUtil.getUserDetail().then((value) {
+      String name = value!.username;
+      final ref = FirebaseStorage.instance.ref().child("images/$name.png");
+      ref.getDownloadURL().then((value) =>
+          SharedPreferencesUtil.setCache(SharedPreferencesUtil.HEAD_PIC, value));
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,22 +45,12 @@ class _CustomBottomNavBar extends State<CustomBottomNavBar> {
             ),
             BottomNavigationBarItem(
               label: '',
-              icon: Icon(Icons.auto_graph_rounded),
+              icon: Icon(Icons.trending_up),
               backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
               label: '',
-              icon: Icon(Icons.history),
-              backgroundColor: Colors.white,
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.person_rounded),
-              backgroundColor: Colors.white,
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.ac_unit_sharp),
+              icon: Icon(Icons.person),
               backgroundColor: Colors.white,
             ),
           ],
@@ -64,71 +66,3 @@ class _CustomBottomNavBar extends State<CustomBottomNavBar> {
     });
   }
 }
-// Widget CustomBottomNavBar(BuildContext context) {
-//   int _selectedIndex = 0;
-//
-//   return BottomBarWithSheet(
-//     selectedIndex: _selectedIndex,
-//     sheetChild: const Center(child: Text("Place for your another content")),
-//     bottomBarTheme: const BottomBarTheme(
-//       height: 70,
-//       heightClosed: 70,
-//       mainButtonPosition: MainButtonPosition.middle,
-//       itemIconColor: Colors.grey,
-//       selectedItemIconColor: Colors.red,
-//     ),
-//     mainActionButtonTheme: MainActionButtonTheme(
-//       transform: Matrix4.translationValues(0, -30, 0),
-//     ),
-//     mainActionButton: Container(
-//       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-//       decoration: BoxDecoration(
-//         color: Colors.red,
-//         borderRadius: BorderRadius.circular(20),
-//       ),
-//       child: const Text(
-//         'Open',
-//         style: TextStyle(
-//           color: Colors.white,
-//           fontSize: 20,
-//         ),
-//       ),
-//     ),
-//     onSelectItem: (index) => setState(() => _selectedIndex = index),
-//     items: const [
-//       BottomBarWithSheetItem(icon: Icons.settings),
-//       BottomBarWithSheetItem(icon: Icons.favorite),
-//     ],
-//   );
-// }
-//
-// Widget CustomBottomNavBar(HomeScreenViewModel model) {
-//   return BottomNavigationBar(
-//     currentIndex: model.selectedIndex,
-//     selectedItemColor: Colors.black,
-//     elevation: 0,
-//     onTap: model.onItemTapped,
-//     items: <BottomNavigationBarItem>[
-//       BottomNavigationBarItem(
-//         label: '',
-//         icon: Icon(Icons.home),
-//         backgroundColor: Colors.white,
-//       ),
-//       BottomNavigationBarItem(
-//         label: '',
-//         icon: Icon(Icons.auto_graph_rounded),
-//         backgroundColor: Colors.lightBlue,
-//       ),
-//       BottomNavigationBarItem(
-//         label: '',
-//         icon: Icon(Icons.history),
-//         backgroundColor: Colors.lightBlue,
-//       ),
-//       BottomNavigationBarItem(
-//         label: '',
-//         icon: Icon(Icons.person_rounded),
-//         backgroundColor: Colors.lightBlue,
-//       ),
-//     ],
-//   );
-// }

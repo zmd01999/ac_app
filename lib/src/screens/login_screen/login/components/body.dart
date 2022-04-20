@@ -8,14 +8,13 @@ import 'package:maple/popups/popup_warning.dart';
 import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
 import 'package:maple/src/entity/user/login_entity.dart';
 import 'package:maple/src/entity/user/user_entity.dart';
-import 'package:maple/src/screens/home_screen/home_screen.dart';
 import 'package:maple/src/screens/login_screen/login/components/background.dart';
 import 'package:maple/src/screens/login_screen/sign_up/signup_screen.dart';
 import 'package:maple/src/screens/login_screen/login/components/already_have_an_account_acheck.dart';
 import 'package:maple/src/screens/login_screen/login/components/rounded_button.dart';
 import 'package:maple/src/screens/login_screen/login/components/rounded_input_field.dart';
 import 'package:maple/src/screens/login_screen/login/components/rounded_password_field.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:maple/src/widgets/custom_bottom_nav_bar.dart';
 import 'package:maple/utils/shared_preferences_util.dart';
 
 class Body extends StatefulWidget {
@@ -72,18 +71,22 @@ class _BodyState extends State<Body> {
             RoundedButton(
               text: "登陆",
               press: () async{
-
                 if( !usernameController.text.isEmpty || !passwordController.text.isEmpty) {
+                  SharedPreferencesUtil.clear();
                   LoginEntity user = new LoginEntity(name: usernameController.text, password: passwordController.text);
                   SmartDialog.showLoading();
 
                   Api.login(data: jsonEncode(user), onSuccess: userHandler).then((value){
                     print(value);
-                    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-                    SmartDialog.dismiss();
-                  }).catchError((e) {
-                      SmartDialog.show(widget: PopupError(popupTitle: e));}
-                  );
+                    if (value == null){
+                      Navigator.of(context).pushReplacementNamed(CustomBottomNavBar.routeName);
+                      SmartDialog.dismiss();
+                    } else {
+                      SmartDialog.dismiss();
+                      SmartDialog.show(widget: PopupError(popupTitle: value));
+                    }
+
+                  });
                 } else {
                   SmartDialog.show(
                       widget: PopupWarning(

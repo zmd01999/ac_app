@@ -25,11 +25,10 @@ class _UploadImageState extends State<UploadImage> {
   //   });
   // }
   void _startUpload() async{
-    FirebaseStorage.instance;
     //Create a unique random name for the file to upload
-
+    String name = await SharedPreferencesUtil.getUserDetail().then((value) => value!.username);
     //Instantiate a path for the files to be uploaded.
-    final ref = FirebaseStorage.instance.ref().child('images/actor.png');
+    final ref = FirebaseStorage.instance.ref().child('images/$name.png');
 
     //We will store the uploaded file's url in this variable to access later
     var url;
