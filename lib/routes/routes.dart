@@ -30,7 +30,6 @@ final Map<String, WidgetBuilder> routes = {
   EditProfile.routeName: (context) =>  const EditProfile(),
   SetEventScreen.routeName: (context) => const SetEventScreen(),
   StatScreen.routeName: (context) =>  StatScreen(),
-  Menu.routeName: (context) => const Menu(),
   DeviceTotal.routeName:  (context) =>  DeviceTotal(),
   SavingsScreen.routeName:  (context) => const SavingsScreen(),
   WifiDevice.routeName:  (context) => const WifiDevice(),
