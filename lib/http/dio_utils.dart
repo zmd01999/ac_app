@@ -29,7 +29,7 @@ class DioUtils {
   ///Get请求
   static Future<dynamic> get <T>( {  required String url, parameters, Function(T? t)? onSuccess, Function(String error)? onError, }) async {
     try {
-      getResponse<T>(url: url, method : GET ,parameters: parameters, onSuccess: onSuccess, onError: onError);
+      return getResponse<T>(url: url, method : GET ,parameters: parameters, onSuccess: onSuccess, onError: onError);
     } catch (e) {
       print(e);
     }
@@ -82,7 +82,7 @@ class DioUtils {
           /// 返回泛型Bean
           onSuccess(bean.data);
         }else{
-          return bean.data;
+          return bean.data == null ? bean.dataList : bean.data;
         }
       } else {
         throw Exception('statusCode:${response.statusCode}+${response.statusMessage}');
