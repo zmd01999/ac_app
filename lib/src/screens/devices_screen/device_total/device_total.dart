@@ -5,6 +5,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/all_list.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/new_device_method.dart';
+import 'package:maple/utils/shared_preferences_util.dart';
 
 import 'components/bolt.dart';
 import 'components/custom_switch.dart';
@@ -28,7 +29,15 @@ class _deviceTotalState extends State<DeviceTotal> {
   bool dismiss = false;
 
   String _animation = "open";
-
+  late String userName;
+  @override
+  void initState() {
+    // TODO: implement initState
+     SharedPreferencesUtil.getUserDetail().then((value) {
+       userName = value?.username ?? "";
+     });
+    super.initState();
+  }
 
 
   @override
@@ -70,7 +79,7 @@ class _deviceTotalState extends State<DeviceTotal> {
                       duration: Duration(milliseconds: 240),
                       height: menuOpen ? 180 : 130,
                     ),
-                    AllList(w: w, totalSwitch: menuOpen,),
+                    AllList(w: w, totalSwitch: menuOpen,userName: userName,),
                     SizedBox(height: 20),
                     Container(
                       width: 54,

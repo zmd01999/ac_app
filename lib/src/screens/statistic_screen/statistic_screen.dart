@@ -57,11 +57,20 @@ class StatScreen extends StatelessWidget {
                       future: SharedPreferencesUtil.getCache(SharedPreferencesUtil.HEAD_PIC),
                       builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
                         if(snapshot.hasData){
-                          return FadeInImage.memoryNetwork(
-                            placeholder: kTransparentImage,
-                            image: snapshot.data??"",
-                            fit: BoxFit.cover,
-                            width: 28,
+                          return Container(
+                              height: 28,
+                              width: 28,
+                              decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent),
+                              child: ClipRRect(
+                                  child: FadeInImage.memoryNetwork(
+                                    placeholder: kTransparentImage,
+                                    image: snapshot.data??"",
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(35),
+                            ),
                           );
                         } else {
                           return  Padding(
@@ -227,31 +236,31 @@ class StatScreen extends StatelessWidget {
                     ButtonCard(
                       imageUrl: "assets/icons/trash.png",
                       location: WasteRemovalPage(),
-                      label: "Waste Removal",
+                      label: "智能决策",
                     ),
                     SizedBox(width: 18),
                     ButtonCard(
                       imageUrl: "assets/icons/featured_two.png",
                       location: MarginalCoalPage(),
-                      label: "Marginal Coal",
+                      label: "场景定制",
                     ),
                     SizedBox(width: 18),
                     ButtonCard(
                       imageUrl: "assets/icons/hauling.png",
                       location: CoalHaulingPage(),
-                      label: "Coal Hauling",
+                      label: "异常报警",
                     ),
                     SizedBox(width: 18),
                     ButtonCard(
                       imageUrl: "assets/icons/barging.png",
                       location: CoalBargingPage(),
-                      label: "Coal Barging",
+                      label: "策略配置", //优先经济，舒适度...
                     ),
                     SizedBox(width: 18),
                     ButtonCard(
                       imageUrl: "assets/icons/featured_three.png",
                       location: SalesPage(),
-                      label: "Sales",
+                      label: "用电概况",
                     ),
                     SizedBox(width: 18),
                     ButtonCard(

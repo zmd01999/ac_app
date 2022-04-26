@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:maple/src/entity/home/devices_entity.dart';
 import 'package:maple/src/screens/devices_screen/smart_ac/smart_ac.dart';
 
 import 'custom_switch.dart';
@@ -14,21 +15,22 @@ class CustomTileModel {
   CustomTileModel(this.title, this.subtitle, this.img);
 }
 
-List<CustomTileModel> tiles = [
-  CustomTileModel("美的", "Sleeping", "assets/images/ac.png"),
-  CustomTileModel("三星", "Sleeping", "assets/images/ac.png"),
-  CustomTileModel("奥克斯", "Sleeping", "assets/images/ac.png"),
-  CustomTileModel("格力", "Sleeping", "assets/images/ac.png"),
+List<DevicesEntity> tiles = [
+  DevicesEntity(nikeName: "美的", type: "Sleeping"),
+  DevicesEntity(nikeName: "三星", type:"Sleeping"),
+  DevicesEntity(nikeName: "奥克斯", type:"Sleeping"),
+  DevicesEntity(nikeName: "格力", type:"Sleeping"),
 ];
 class CustomListTile extends StatefulWidget {
 
   const CustomListTile({
     Key? key, required this.tileModel, required this.w,  this.onTap, this.totalSwitch
   }) : super(key: key);
-  final CustomTileModel tileModel;
+  final DevicesEntity tileModel;
   final double w;
   final VoidCallback? onTap ;
   final bool? totalSwitch;
+  final String img = "assets/images/ac.png";
 
   @override
   _CustomListTile createState() => _CustomListTile();
@@ -41,7 +43,7 @@ class _CustomListTile extends State<CustomListTile> {
   @override
   void initState() {
     print("enter init");
-    if (widget.totalSwitch == false || widget.tileModel.subtitle == "Sleeping") {
+    if (widget.totalSwitch == false || widget.tileModel.status == "Sleeping") {
       isOpened = false;
       deviceState = "Sleeping";
     } else {
@@ -93,7 +95,7 @@ class _CustomListTile extends State<CustomListTile> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
-                image: AssetImage(widget.tileModel.img),
+                image: AssetImage(widget.img),
                 fit: BoxFit.cover,
               ),
             ),
@@ -106,7 +108,7 @@ class _CustomListTile extends State<CustomListTile> {
               Row(
                 children: <Widget>[
                   Text(
-                    widget.tileModel.title,
+                    widget.tileModel.status??"Sleeping",
                     style: TextStyle(
                       fontSize: 20,
                       color: MyTheme.textColor,

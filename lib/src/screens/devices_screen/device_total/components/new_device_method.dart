@@ -45,9 +45,17 @@ class NewDeviceMethod extends StatelessWidget {
        ),
        // TODO:_scan获得二维码数据之后Http请求云，获得设备信息等
        onOkButtonPressed: () async {
-         _scan();
-         SmartDialog.dismiss(tag: "newDevice");
-         getIt<NavigationService>().navigatorKey.currentState?.pushNamed(AddFinishedWf.routeName);
+         _scan().then((value) {
+           print(value!);
+           if(value.length == 0){
+             Navigator.pop(context);
+           } else {
+             SmartDialog.dismiss(tag: "newDevice");
+             getIt<NavigationService>().navigatorKey.currentState?.pushNamed(AddFinishedWf.routeName);
+           }
+
+         });
+
        },
        onCancelButtonPressed: () {
          SmartDialog.show(widget: NewDeviceMethod1(), tag: "wifi");
@@ -55,7 +63,7 @@ class NewDeviceMethod extends StatelessWidget {
        },
      );
   }
-  Future<void> _scan() async {
+  Future<String?> _scan() async {
     try {
       final result = await BarcodeScanner.scan(
         options: ScanOptions(
@@ -72,7 +80,7 @@ class NewDeviceMethod extends StatelessWidget {
           ),
         ),
       );
-      result.rawContent;
+      return result.rawContent;
     } on PlatformException catch (e) {
         scanResult = ScanResult(
           type: ResultType.Error,

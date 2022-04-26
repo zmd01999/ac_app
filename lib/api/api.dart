@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:maple/http/dio_utils.dart';
+import 'package:maple/src/entity/home/devices_entity.dart';
 import 'package:maple/src/entity/home/weather_entity.dart';
 import 'package:maple/src/entity/user/user_entity.dart';
 
@@ -19,6 +20,9 @@ class Api {
     return weatherEntity;
   }
 
+  static Future<List<DevicesEntity>> getMyDevices({required var data, onSuccess, onError,}) async{
+    return await DioUtils.get<DevicesEntity>(url: '/api/v1/admin/devices' , parameters: data, onSuccess: onSuccess, onError:onError);
+  }
 
 
 }
