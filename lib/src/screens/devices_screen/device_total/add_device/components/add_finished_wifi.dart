@@ -1,12 +1,18 @@
+import 'dart:convert';
+
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_tags/flutter_tags.dart';
+import 'package:maple/api/api.dart';
 import 'package:maple/config/size_config.dart';
 import 'package:maple/popups/popup_warning.dart';
 import 'package:maple/popups/popup_widgets/popup_filled_button.dart';
+import 'package:maple/src/entity/home/devices_entity.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
+import 'package:maple/src/screens/devices_screen/device_total/device_total.dart';
+import 'package:maple/utils/shared_preferences_util.dart';
 
 class AddFinishedWf extends StatefulWidget {
   static String routeName = "/addfinishwf";
@@ -68,12 +74,12 @@ class _AddFinishedWfState extends State<AddFinishedWf> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: nameController,
                     autofocus: false,
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.name,
                     validator: (value) {
                       if (value!.isEmpty || value
                           .trim()
                           .isEmpty) {
-                        return '请输入密码';
+                        return '请输入名称';
                       }
                       return null;
                     },
@@ -149,7 +155,7 @@ class _AddFinishedWfState extends State<AddFinishedWf> {
                     children: <Widget>[
                       Expanded(
                           child: ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               if (nameController.text.isEmpty) {
                                 SmartDialog.show(
                                     widget: PopupWarning(
@@ -163,7 +169,14 @@ class _AddFinishedWfState extends State<AddFinishedWf> {
                                     )
                                 );
                               } else {
-                                // TODO:Http云服务 nameController
+                                DevicesEntity device = await new DevicesEntity(nikeName: nameController.text, userName: await SharedPreferencesUtil.getUserDetail().then((value) => value?.username)
+                                , status: "Sleeping", type: "空调");
+                                Api.addDevice(data: device.toString()).then((value) {
+                                  if (value != null) {
+                                    SmartDialog.showToast("设备添加成功！");
+                                    Navigator.of(context).pushReplacementNamed(DeviceTotal.routeName);
+                                  }
+                                });
                               }
                             },
                             style: ButtonStyle(

@@ -2,6 +2,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:maple/src/entity/user/user_entity.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/all_list.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/mytheme.dart';
 import 'package:maple/src/screens/devices_screen/device_total/components/new_device_method.dart';
@@ -29,13 +30,11 @@ class _deviceTotalState extends State<DeviceTotal> {
   bool dismiss = false;
 
   String _animation = "open";
-  late String userName;
+  String userName = "zmd01999@qq.com";
   @override
   void initState() {
     // TODO: implement initState
-     SharedPreferencesUtil.getUserDetail().then((value) {
-       userName = value?.username ?? "";
-     });
+
     super.initState();
   }
 
@@ -79,7 +78,16 @@ class _deviceTotalState extends State<DeviceTotal> {
                       duration: Duration(milliseconds: 240),
                       height: menuOpen ? 180 : 130,
                     ),
-                    AllList(w: w, totalSwitch: menuOpen,userName: userName,),
+                    FutureBuilder<UserDetail?>(
+                        future: SharedPreferencesUtil.getUserDetail(), // a previously-obtained Future<String> or null
+                        builder: (BuildContext context, AsyncSnapshot<UserDetail?> snapshot) {
+                          if (snapshot.hasData){
+                            return  AllList(w: w, totalSwitch: menuOpen,userName: snapshot.data?.username);
+                          }  else {
+                            return AllList(w: w, totalSwitch: menuOpen,userName: "zmd01999@qq.com");
+                          }
+                        }
+                        ),
                     SizedBox(height: 20),
                     Container(
                       width: 54,

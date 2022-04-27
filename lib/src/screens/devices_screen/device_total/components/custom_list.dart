@@ -107,11 +107,19 @@ class _CustomListTile extends State<CustomListTile> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Text(
-                    widget.tileModel.status??"Sleeping",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: MyTheme.textColor,
+                  Container(
+                    constraints: BoxConstraints(
+                        maxWidth: 60,
+                     ),
+                    child: Text(
+                      widget.tileModel.nikeName??"Default",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: MyTheme.textColor,
+                          overflow: TextOverflow.clip
+                      ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis
                     ),
                   ),
                   SizedBox(width: 10),

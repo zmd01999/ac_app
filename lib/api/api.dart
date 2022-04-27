@@ -20,8 +20,12 @@ class Api {
     return weatherEntity;
   }
 
-  static Future<List<DevicesEntity>> getMyDevices({required var data, onSuccess, onError,}) async{
-    return await DioUtils.get<DevicesEntity>(url: '/api/v1/admin/devices' , parameters: data, onSuccess: onSuccess, onError:onError);
+  static Future<List<DevicesEntity>> getMyDevices({required data, onSuccess, onError,}) async{
+    return await DioUtils.get<DevicesEntity>(url: '/api/v1/units/devices' , parameters: data, onSuccess: onSuccess, onError:onError);
+  }
+
+  static Future<DevicesEntity?> addDevice({required data, onSuccess, onError,}) async{
+    return DioUtils.post<DevicesEntity>(url: '/api/v1/units/addDevice', method: 'post' , parameters: data, onSuccess: onSuccess, onError:onError).then((value) => value);
   }
 
 
