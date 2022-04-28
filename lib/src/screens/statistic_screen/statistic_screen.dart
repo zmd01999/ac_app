@@ -241,33 +241,34 @@ class StatScreen extends StatelessWidget {
                     SizedBox(width: 18),
                     ButtonCard(
                       imageUrl: "assets/icons/featured_two.png",
-                      location: MarginalCoalPage(),
-                      label: "场景定制",
-                    ),
-                    SizedBox(width: 18),
-                    ButtonCard(
-                      imageUrl: "assets/icons/hauling.png",
-                      location: CoalHaulingPage(),
-                      label: "异常报警",
-                    ),
-                    SizedBox(width: 18),
-                    ButtonCard(
-                      imageUrl: "assets/icons/barging.png",
                       location: CoalBargingPage(),
-                      label: "策略配置", //优先经济，舒适度...
-                    ),
-                    SizedBox(width: 18),
-                    ButtonCard(
-                      imageUrl: "assets/icons/featured_three.png",
-                      location: SalesPage(),
-                      label: "用电概况",
+                      label: "场景定制",
                     ),
                     SizedBox(width: 18),
                     ButtonCard(
                       imageUrl: "assets/icons/featured_four.png",
                       location: InventoryPage(),
-                      label: "Inventory",
+                      label: "状态监控",
                     ),
+                    SizedBox(width: 18),
+                    ButtonCard(
+                      imageUrl: "assets/icons/hauling.png",
+                      location: MarginalCoalPage(),
+                      label: "异常报警",
+                    ),
+                    // SizedBox(width: 18),
+                    // ButtonCard(
+                    //   imageUrl: "assets/icons/barging.png",
+                    //   location: CoalHaulingPage(),
+                    //   label: "策略配置", //优先经济，舒适度...
+                    // ),
+                    // SizedBox(width: 18),
+                    // ButtonCard(
+                    //   imageUrl: "assets/icons/featured_three.png",
+                    //   location: SalesPage(),
+                    //   label: "用电概况",
+                    // ),
+
                     SizedBox(width: 18),
                   ],
                 ),
