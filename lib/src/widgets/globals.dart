@@ -19,7 +19,7 @@ const pitSectorFour = "自定义场景";
 
 String getDateNow() {
   DateTime now = new DateTime.now();
-  DateTime yesterday = DateTime(now.year, now.month, now.day - 1);
+  DateTime yesterday = DateTime(now.year, now.month, now.day);
 
   String year = yesterday.toString().substring(0, 4);
   String month = yesterday.toString().substring(5, 7);
